@@ -11,7 +11,7 @@ const Navbar = ({ color } : { color: string; }) => {
   const pathname = usePathname()
 
   return (
-    <nav id="nav" className='fixed top-0 w-full z-50 px-6 py-4 md:py-6' style={{background: pathname === '/business' ? '#080808' : 'transparent'}}>
+    <nav id="nav" className='fixed top-0 w-full z-50 px-6 py-4 md:py-6' style={{background: pathname === '/business' ? '#080808' : 'FFFEF9'}}>
       <div className="md:container mx-auto">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-10 xl:space-x-20">
