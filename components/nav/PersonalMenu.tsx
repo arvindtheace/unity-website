@@ -63,7 +63,7 @@ export const PersonalMenu = forwardRef<HTMLElement>((props, ref) => {
             <div className='text-sm'>Get instant loans with interest rates in your interest</div>
           </div>
           <div className={`sm rounded-xl mb-4 p-4 ${personalSelectedIndex === 2 ? 'bg-[#F5F4F1]' : ''}`} onMouseEnter={() => setPersonalSelectedIndex(2)}>
-            <h6 className="">Insure</h6>
+            <h6 className="">Grow</h6>
             <div className='text-sm'>Secure your future with health insurance etc</div>
           </div>
         </div>
