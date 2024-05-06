@@ -33,7 +33,7 @@ export const PersonalMenu = forwardRef<HTMLElement>((props, ref) => {
             builder
               .get('navigation', {
                 query: {
-                  name: 'Insure'
+                  name: 'Grow'
                 },
               })
               .promise()
