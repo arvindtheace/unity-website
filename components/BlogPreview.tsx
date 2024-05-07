@@ -29,52 +29,52 @@ type Blogs = {
   }[]
 }
 
-// const blogsSeed = [
-//   {
-//     title: 'How to save your money efficiently in your life?',
-//     slug: 'how-to-save-your-money-efficiently-in-your-life',
-//     image: 'https://picsum.photos/400/300',
-//     type: 'blog',
-//     date: '2024-01-01',
-//     categories: ['Finance', 'Saving'],
-//     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-//     readTime: 5,
-//     featured: true
-//   },
-//   {
-//     title: 'How to save your money efficiently in your life?',
-//     slug: 'how-to-save-your-money-efficiently-in-your-life',
-//     image: 'https://picsum.photos/400/300',
-//     type: 'story',
-//     date: '2024-01-01',
-//     categories: ['Finance', 'Saving'],
-//     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-//     readTime: 5,
-//     featured: true
-//   },
-//   {
-//     title: 'How to save your money efficiently in your life?',
-//     slug: 'how-to-save-your-money-efficiently-in-your-life',
-//     image: 'https://picsum.photos/400/300',
-//     type: 'blog',
-//     date: '2024-01-01',
-//     categories: ['Finance', 'Saving'],
-//     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-//     readTime: 5,
-//     featured: true
-//   },
-//   {
-//     title: 'How to save your money efficiently in your life?',
-//     slug: 'how-to-save-your-money-efficiently-in-your-life',
-//     image: 'https://picsum.photos/400/300',
-//     type: 'story',
-//     date: '2024-01-01',
-//     categories: ['Finance', 'Saving'],
-//     excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-//     readTime: 5,
-//     featured: true
-//   },
-// ]
+const blogsSeed = [
+  {
+    title: 'How to save your money efficiently in your life?',
+    slug: 'how-to-save-your-money-efficiently-in-your-life',
+    image: 'https://picsum.photos/400/300',
+    type: 'blog',
+    date: '2024-01-01',
+    categories: ['Finance', 'Saving'],
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    readTime: 5,
+    featured: true
+  },
+  {
+    title: 'How to save your money efficiently in your life?',
+    slug: 'how-to-save-your-money-efficiently-in-your-life',
+    image: 'https://picsum.photos/400/300',
+    type: 'story',
+    date: '2024-01-01',
+    categories: ['Finance', 'Saving'],
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    readTime: 5,
+    featured: true
+  },
+  {
+    title: 'How to save your money efficiently in your life?',
+    slug: 'how-to-save-your-money-efficiently-in-your-life',
+    image: 'https://picsum.photos/400/300',
+    type: 'blog',
+    date: '2024-01-01',
+    categories: ['Finance', 'Saving'],
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    readTime: 5,
+    featured: true
+  },
+  {
+    title: 'How to save your money efficiently in your life?',
+    slug: 'how-to-save-your-money-efficiently-in-your-life',
+    image: 'https://picsum.photos/400/300',
+    type: 'story',
+    date: '2024-01-01',
+    categories: ['Finance', 'Saving'],
+    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    readTime: 5,
+    featured: true
+  },
+]
 
 export default function BlogPreview({ size = "small", blogs }: any) {
   return (
@@ -88,7 +88,7 @@ export default function BlogPreview({ size = "small", blogs }: any) {
         className="w-full pb-20"
       >
         <CarouselContent className='items-stretch'>
-          {/* {
+          {
             blogsSeed.map((_: any, index: number) => (
               <CarouselItem key={index} className={clsx(
                 size === "small" && `basis-4/5 ${_.type === 'story' ? 'md:basis-1/2' : 'md:basis-1/3'}`,
@@ -137,8 +137,8 @@ export default function BlogPreview({ size = "small", blogs }: any) {
                 </BlogCard>
               </CarouselItem>
             ))
-          } */}
-          {blogs.length > 0 && blogs.map((_: any, index: number) => (
+          } 
+          {/* {blogs.length > 0 && blogs.map((_: any, index: number) => (
             //TODO: wrap with <a>
             <CarouselItem key={index} className={`${_.article.value?.data.type === 'story' ? 'md:basis-1/2' : 'md:basis-1/3'}`}>
               <BlogCard className='h-full'>
@@ -154,7 +154,7 @@ export default function BlogPreview({ size = "small", blogs }: any) {
                 </div>
               </BlogCard>
             </CarouselItem>
-          ))}
+          ))} */}
         </CarouselContent>
         <div className="flex items-end justify-between mt-20">
           <div>
