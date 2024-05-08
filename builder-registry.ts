@@ -901,3 +901,10 @@ Builder.registerComponent(
     name: "HeroSection",
   }
 );
+
+Builder.registerComponent(
+  dynamic(() => import("./components/FundsAccessInstructions")),
+  {
+    name: "FundsAccessInstructions"
+  }
+)
