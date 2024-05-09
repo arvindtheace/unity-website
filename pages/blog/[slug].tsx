@@ -109,10 +109,10 @@ function BlogArticle({ article }: { article: any }) {
                     <h6 className='mb-6'>Related Blogs</h6>
                     {
                       article?.data.related?.map((item: any) => (
-                        <div key={item.article.value.data.slug} className="mb-6">
+                        <a key={item.article.value.data.slug} className="mb-6" href={item.article.value.previewUrl}>
                           <img src={item.article.value.data.image} alt={item.article.value.data.title} className="w-full h-44 object-cover rounded-xl mb-4" />
                           <h6 className="mb-2">{item.article.value.data.title}</h6>
-                        </div>
+                        </a>
                       ))
                     }
                   </div>
