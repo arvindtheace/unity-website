@@ -12,12 +12,18 @@ import { Facebook, Twitter, Instagram, LinkedIn, Copy } from "@/components/icons
 import styled from "styled-components";
 import Navbar from "@/components/Navbar";
 import { formatDistanceToNow } from "date-fns";
+import { useRouter } from 'next/router'
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY as string);
 
 function BlogArticle({ article }: { article: any }) {
-  console.log(article)
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const router = useRouter();
+
+  if (router.isFallback) {
+    //TODO: replace with actual spinner
+    return <h1>Loading...</h1>
+  }
 
   const isPreviewing = useIsPreviewing();
   if (!article && !isPreviewing) {
@@ -129,14 +135,14 @@ function BlogArticle({ article }: { article: any }) {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
-  const article = await builder
+  const article = (await builder
     .get("blog-articles", {
       query: {
         // Get the specific article by slug
-        "data.slug": params.slug,
+        "data.slug": params?.slug,
       },
     })
-    .promise() || null;
+    .promise()) || null;
 
   return {
     props: {
