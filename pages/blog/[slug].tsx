@@ -64,7 +64,7 @@ function BlogArticle({ article }: { article: any }) {
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
                   <div className="col-span-2">
                     <h3 className="mb-4">{article?.data?.title}</h3>
-                    <div className="flex items-center gap-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
                       {/* {article?.data?.categories.map((category: any, index: number) => (
                         <p key={category}>
                           <span className="uppercase text-[#B97A00] font-semibold tracking-wider">{category}</span>
