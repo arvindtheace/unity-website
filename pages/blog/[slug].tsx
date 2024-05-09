@@ -35,6 +35,9 @@ function BlogArticle({ article }: { article: any }) {
   const copyUrl = () => {
     navigator.clipboard.writeText(shareUrl);
   }
+  let newDate  = new Date(article?.data?.date);
+  //@ts-ignore
+  const elapsedTime = isNaN(newDate) ? '' : formatDistanceToNow(newDate, { addSuffix: true });
 
   return (
     <>
@@ -58,7 +61,7 @@ function BlogArticle({ article }: { article: any }) {
 
                 <img src={article?.data?.image} alt={article?.data?.title} className="w-full object-cover rounded-x mb-12" />
 
-                <div className="grid grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
                   <div className="col-span-2">
                     <h3 className="mb-4">{article?.data?.title}</h3>
                     <div className="flex items-center gap-6">
@@ -69,7 +72,7 @@ function BlogArticle({ article }: { article: any }) {
                         </p>
                       ))} */}
                       <span className="uppercase text-[#B97A00] font-semibold tracking-wider">{article?.data?.primaryCategory}</span>
-                      {/* <p className='text-gray-500'>{article?.data?.readTime} min read&nbsp;&nbsp;|&nbsp;&nbsp;{formatDistanceToNow(article?.data?.date, { addSuffix: true })}</p> */}
+                      <p className='text-gray-500'>{article?.data?.readTime} min read&nbsp;&nbsp;|&nbsp;&nbsp;{elapsedTime}</p>
                     </div>  
                     <hr className="mt-4 mb-8" />
                     <BlogContent className="mb-12">
@@ -82,7 +85,7 @@ function BlogArticle({ article }: { article: any }) {
                   </div>
                   
                   {/* Sidebar */}
-                  <div>
+                  <div className="col-span-2 sm:col-span-1">
                     <div>
                       <h6 className='mb-6'>Share this blog</h6>
                       <div className="flex flex-wrap items-center gap-2">
