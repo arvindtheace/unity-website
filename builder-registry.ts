@@ -908,3 +908,40 @@ Builder.registerComponent(
     name: "FundsAccessInstructions"
   }
 )
+
+Builder.registerComponent(
+  dynamic(() => import("./components/BlogPreview2")),
+  {
+    name: "BlogPreview2",
+    friendlyName: "Temp Blog Preview",
+    inputs: [
+      {
+        name: "size",
+        type: "string",
+        friendlyName: "Size",
+        defaultValue: "small",
+        enum: [
+          {
+            label: "Small",
+            value: "small",
+          },
+          {
+            label: "Large",
+            value: "large",
+          },
+        ],
+      },
+      {
+        name: "blogs",
+        type: "list",
+        subFields: [
+          {
+            name: "article",
+            type: "reference",
+            model: "blog-articles",
+          },
+        ],
+      },
+    ],
+  }
+);
