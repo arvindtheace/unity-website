@@ -15,7 +15,7 @@ import { Switch } from './ui/switch'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
 import clsx from 'clsx'
 import { CalendarIcon } from 'lucide-react'
-import { addDays, addYears, format } from 'date-fns'
+import { addDays, addYears, addMonths, format } from 'date-fns'
 import { Calendar } from './ui/calendar'
 
 export default function FDCalculator({ title, cta, ctaLink }: { title: string, cta: string, ctaLink: string}) {
@@ -30,12 +30,23 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   const [returnAmount, setReturnAmount] = React.useState(0)
   const [interestRateMap, setInterestRateMap] = React.useState([])
   const [interestRate, setInterestRate] = React.useState(8.5)
+  const [maturityDate, setMaturityDate] = React.useState(new Date())
   const videoRef = React.useRef<HTMLVideoElement>(null)
 
   // Calculate tenure in years
   React.useEffect(() => {
     const tenureInYears = (years * 365 + months * 30 + +days) / 365;
     setTenure(tenureInYears);
+  }, [years, months, days]);
+
+  React.useEffect(() => {
+      //@ts-ignore
+      const res = addYears(date, parseInt(years));
+      //@ts-ignore
+      const res1 =  addMonths(res, parseInt(months));
+      //@ts-ignore
+      const maturityDate = addDays(res1, parseInt(days));
+      setMaturityDate(maturityDate)
   }, [years, months, days]);
 
   // Fetch interest rates based on deposit type
@@ -134,29 +145,6 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
     }
   }
 
-  // TEST - To be removed
-  function formatCurrency(inputField: any) {
-    // Get the entered value
-    let value = inputField.value;
-  
-    // Remove all non-numeric characters
-    value = value.replace(/[^0-9.]/g, '');
-  
-    // Split the value into whole and decimal parts
-    const parts = value.split('.');
-  
-    // Format the whole number part with commas
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  
-    // Limit decimal part to 2 digits (optional)
-    if (parts.length > 1) {
-      parts[1] = parts[1].substring(0, 2);
-    }
-  
-    // Combine the formatted parts and set the input value
-    inputField.value = parts.join('.');
-  }
-
   const handleDepositSlider = (e: number[]) => {
     setDepositAmount(e[0])
     if (videoRef.current) {
@@ -225,12 +213,12 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
                 depositType !== "fd-short-term" && 
                 <Select onValueChange={(e: any) => setYears(e)} value={String(years)}>
                   <SelectTrigger>
-                    <SelectValue placeholder={years + " Y"} />
+                    <SelectValue placeholder={years + " Years"} />
                   </SelectTrigger>
                   <SelectContent>
                     {
                       Array.from({ length: 10 }, (_, i) => (
-                        <SelectItem key={i} value={String(i + 1)}>{i + 1} Y</SelectItem>
+                        <SelectItem key={i} value={String(i + 1)}>{i + 1} Years</SelectItem>
                       ))
                     }
                   </SelectContent>
@@ -238,24 +226,24 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
               }
               <Select onValueChange={(e: any) => setMonths(e)} value={String(months)}>
                 <SelectTrigger>
-                  <SelectValue placeholder={months + " M"} />
+                  <SelectValue placeholder={months + " Months"} />
                 </SelectTrigger>
                 <SelectContent>
                   {
                     Array.from({ length: 12 }, (_, i) => (
-                      <SelectItem key={i} value={String(i)}>{i} M</SelectItem>
+                      <SelectItem key={i} value={String(i)}>{i} Months</SelectItem>
                     ))
                   }
                 </SelectContent>
               </Select>
               <Select onValueChange={(e: any) => setDays(e)} value={String(days)}>
                 <SelectTrigger>
-                  <SelectValue placeholder={days + " D"} />
+                  <SelectValue placeholder={days + " Days"} />
                 </SelectTrigger>
                 <SelectContent>
                   {
                     Array.from({ length: 31 }, (_, i) => (
-                      <SelectItem key={i} value={String(i)}>{i} D</SelectItem>
+                      <SelectItem key={i} value={String(i)}>{i} Days</SelectItem>
                     ))
                   }
                 </SelectContent>
@@ -350,7 +338,8 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
         <div className="flex items-center justify-between mb-10">
           <p>Maturity Date</p>
           <div className='text-xl font-bold'>
-            {format(addDays(date, ((years * 365) + (months * 30) + +days)), "PPP")}
+            {/* {format(addDays(date, ((years * 365) + (months * 30) + +days)), "PPP")} */}
+            {format(maturityDate, 'PPP')}
           </div>
         </div>
 
