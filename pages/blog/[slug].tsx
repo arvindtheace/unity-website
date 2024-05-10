@@ -20,10 +20,15 @@ function BlogArticle({ article }: { article: any }) {
   const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
   const router = useRouter();
 
-  if (router.isFallback) {
-    //TODO: replace with actual spinner
-    return <h1>Loading...</h1>
-  }
+  console.log(article);
+
+if (router.isFallback) {
+  return (
+    <LoadingContainer className="h-screen w-screen flex justify-center items-center">
+      <img src="/images/Loader.gif" alt="Loader" />
+    </LoadingContainer>
+  )
+}
 
   const isPreviewing = useIsPreviewing();
   if (!article && !isPreviewing) {
@@ -41,7 +46,7 @@ function BlogArticle({ article }: { article: any }) {
   const copyUrl = () => {
     navigator.clipboard.writeText(shareUrl);
   }
-  let newDate  = new Date(article?.data?.date);
+  let newDate = new Date(article?.data?.date);
   //@ts-ignore
   const elapsedTime = isNaN(newDate) ? '' : formatDistanceToNow(newDate, { addSuffix: true });
 
@@ -67,7 +72,7 @@ function BlogArticle({ article }: { article: any }) {
 
                 <img src={article?.data?.image} alt={article?.data?.title} className="w-full object-cover rounded-x mb-12" />
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-12">
                   <div className="col-span-2">
                     <h3 className="mb-4">{article?.data?.title}</h3>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
@@ -79,7 +84,7 @@ function BlogArticle({ article }: { article: any }) {
                       ))} */}
                       <span className="uppercase text-[#B97A00] font-semibold tracking-wider">{article?.data?.primaryCategory}</span>
                       <p className='text-gray-500'>{article?.data?.readTime} min read&nbsp;&nbsp;|&nbsp;&nbsp;{elapsedTime}</p>
-                    </div>  
+                    </div>
                     <hr className="mt-4 mb-8" />
                     <BlogContent className="mb-12">
                       {/* Render the Builder drag/drop'd content */}
@@ -89,7 +94,7 @@ function BlogArticle({ article }: { article: any }) {
                       />
                     </BlogContent>
                   </div>
-                  
+
                   {/* Sidebar */}
                   <div className="col-span-2 sm:col-span-1">
                     <div>
@@ -109,7 +114,7 @@ function BlogArticle({ article }: { article: any }) {
                         </a>
                       </div>
                     </div>
-                    
+
                     <hr className="my-10" />
 
                     <h6 className='mb-6'>Related Blogs</h6>
@@ -117,7 +122,7 @@ function BlogArticle({ article }: { article: any }) {
                       article?.data.related?.map((item: any) => (
                         <a key={item.article.value.data.slug} className="mb-6" href={item.article.value.previewUrl}>
                           <img src={item.article.value.data.image} alt={item.article.value.data.title} className="w-full h-44 object-cover rounded-xl mb-4" />
-                          <h6 className="mb-2">{item.article.value.data.title}</h6>
+                          <h6 className="mb-10">{item.article.value.data.title}</h6>
                         </a>
                       ))
                     }
@@ -163,4 +168,10 @@ export default BlogArticle;
 
 const BlogContent = styled.div`
   margin: 24px auto;
+`
+const LoadingContainer = styled.div`
+  background: #FDFDF6;
+  & img {
+    height: 80px;
+  }
 `
