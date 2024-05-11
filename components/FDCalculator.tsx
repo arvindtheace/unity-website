@@ -40,6 +40,12 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   }, [years, months, days]);
 
   React.useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0.05
+    }
+  }, [])
+
+  React.useEffect(() => {
       //@ts-ignore
       const res = addYears(date, parseInt(years));
       //@ts-ignore
@@ -47,7 +53,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
       //@ts-ignore
       const maturityDate = addDays(res1, parseInt(days));
       setMaturityDate(maturityDate)
-  }, [years, months, days]);
+  }, [date, years, months, days]);
 
   // Fetch interest rates based on deposit type
   React.useEffect(() => {
@@ -147,8 +153,20 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
 
   const handleDepositSlider = (e: number[]) => {
     setDepositAmount(e[0])
-    if (videoRef.current) {
-      videoRef.current.currentTime = e[0] / 20000000 * videoRef.current.duration
+    if(videoRef.current) {
+      const minp = 0;
+      const maxp = 100;
+    
+      // The result should be between 100 an 10000000
+      const minv = Math.log(10000);
+      var maxv = Math.log(20000000);
+    
+      // calculate adjustment factor
+      const scale = (maxv - minv) / (maxp - minp);
+      const pos = minp + (Math.log(e[0]) - minv) / scale;
+      const currentTime = videoRef.current.duration * (pos/100);
+      console.log({ currentTime });
+      videoRef.current.currentTime = currentTime;
     }
   }
 
@@ -180,7 +198,17 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
               <Input 
                 type="text"
                 value={formatToIndianCurrency(depositAmount)}
-                onChange={(e: any) => setDepositAmount(e.target.value)}
+                onChange={(e: any) => {
+                  const rawValue =  e.target.value;
+                  const pureNumber = rawValue.replace(/,/g, '');
+                  console.log({ pureNumber });
+                  let val = parseInt(pureNumber);
+                  
+                  if (isNaN(val)){
+                    val = 0
+                  }
+                  setDepositAmount(val)
+                }}
                 placeholder=""
                 className='w-40 pl-8'
                 onKeyDown={(e: any) => (e.keyCode >= 48 && e.keyCode <= 57) || e.keyCode === 8 ? null : e.preventDefault()}
