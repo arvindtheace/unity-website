@@ -172,12 +172,15 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   }
 
   return (
-    <CalculatorContainer className='grid md:grid-cols-2'>
-      <Controls className='flex flex-col gap-10 p-6 lg:p-14'>
-        <div className='text-3xl font-semibold'>{title}</div>
+    <CalculatorContainer className='grid grid-cols-1 md:grid-cols-2'>
+      <Controls className='flex flex-col gap-5 sm:gap-10 p-5 sm:p-6 lg:p-14'>
+        <div className='text-2xl sm:text-3xl font-semibold'>{title}</div>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row sm:items-center sm:justify-between sm:flex-row flex-column gap-2">
+          <div>
           <p className="text-lg">Type of Deposit</p>
+          </div>
+          <div>
           <Select onValueChange={(val) => setDepositType(val)} value={depositType}>
             <SelectTrigger className="w-60">
               <SelectValue placeholder="Select deposit type" />
@@ -189,6 +192,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
               <SelectItem value="fd-reinvestment">Re-investment Plan</SelectItem>
             </SelectContent>
           </Select>
+          </div>
         </div>
 
         <div>
@@ -235,9 +239,9 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
         </div>
 
         <div>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
             <p className="text-lg">Tenure</p>
-            <div className="flex gap-3">
+            <div className="flex gap-1 sm:gap-3">
               {
                 depositType !== "fd-short-term" && 
                 <Select onValueChange={(e: any) => setYears(e)} value={String(years)}>
@@ -319,7 +323,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
 
       </Controls>
 
-      <Result className='relative px-16 pt-32 pb-16'>
+      <Result className='relative sm:px-16 sm:pt-32 sm:pb-16 px-8 pt-16 pb-4'>
         <div className="bg absolute w-full left-10 top-20 pointer-events-none">
           <svg width={508} height={248} viewBox="0 0 508 248" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M470 93.54H479.07" stroke="#88D38F" strokeWidth="2.69687" strokeMiterlimit={10} strokeLinecap="round" />
@@ -340,7 +344,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
         </video>
 
         <div className="sm text-center mb-6">
-          <div className='text-4xl font-extrabold mb-3'>
+          <div className='text-3xl sm:text-4xl font-extrabold mb-3'>
             {/* <span className='text-3xl mr-3'>₹</span> */}
             ₹ {formatToIndianCurrency(+depositAmount + +returnAmount)}
           </div>
