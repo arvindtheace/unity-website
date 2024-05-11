@@ -41,10 +41,24 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   }, [years, months, days]);
 
   React.useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0.05
+    if(videoRef.current && depositAmount > 0) {
+      const minp = 0;
+      const maxp = 100;
+    
+      // The result should be between 100 an 10000000
+      const minv = Math.log(10000);
+      var maxv = Math.log(20000000);
+    
+      // calculate adjustment factor
+      const scale = (maxv - minv) / (maxp - minp);
+      const pos = minp + (Math.log(depositAmount) - minv) / scale;
+      let currentTime = videoRef.current.duration * (pos/100);
+      if(currentTime == 0){
+        currentTime = 0.05
+      }
+      videoRef.current.currentTime = currentTime;
     }
-  }, [])
+  }, [depositAmount])
 
   React.useEffect(() => {
       //@ts-ignore
@@ -153,7 +167,6 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   }
 
   const handleDepositSlider = (e: number[]) => {
-    setDepositAmount(e[0])
     if(videoRef.current) {
       const minp = 0;
       const maxp = 100;
@@ -166,7 +179,6 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
       const scale = (maxv - minv) / (maxp - minp);
       const pos = minp + (Math.log(e[0]) - minv) / scale;
       const currentTime = videoRef.current.duration * (pos/100);
-      console.log({ currentTime });
       videoRef.current.currentTime = currentTime;
     }
   }
@@ -206,7 +218,6 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
                 onChange={(e: any) => {
                   const rawValue =  e.target.value;
                   const pureNumber = rawValue.replace(/,/g, '');
-                  console.log({ pureNumber });
                   let val = parseInt(pureNumber);
                   
                   if (isNaN(val)){
@@ -228,7 +239,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
                 min={10000}
                 max={20000000}
                 step={500}
-                onValueChange={handleDepositSlider}
+                onValueChange={(val: number[]) => setDepositAmount(val[0])}
               />
             </div>
             <div className="flex items-center justify-between text-gray-500">
