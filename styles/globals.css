@@ -34,6 +34,8 @@ body {
   font-family: "Archivo";
   font-weight: 400;
   transition: all 0.5s ease 0.2s;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 nav {
