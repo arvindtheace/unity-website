@@ -31,6 +31,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   const [interestRateMap, setInterestRateMap] = React.useState([])
   const [interestRate, setInterestRate] = React.useState(8.5)
   const [maturityDate, setMaturityDate] = React.useState(new Date())
+  const [calendarOpen, setCalendarOpen] = React.useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null)
 
   // Calculate tenure in years
@@ -282,7 +283,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
 
         <div className="flex items-center justify-between">
           <p className="text-lg">Start Date</p>
-          <Popover>
+          <Popover open={calendarOpen} onOpenChange={() => setCalendarOpen(true)}>
             <PopoverTrigger asChild>
               <Button
                 variant={"outline"}
@@ -300,7 +301,10 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
                 mode="single"
                 selected={date}
                 // @ts-ignore
-                onSelect={setDate}
+                onSelect={(date: Date) => {
+                  setDate(date);
+                  setCalendarOpen(false);
+                } }
                 initialFocus
                 className='w-auto'
               />
