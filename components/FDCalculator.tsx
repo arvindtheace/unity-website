@@ -17,8 +17,45 @@ import clsx from 'clsx'
 import { CalendarIcon } from 'lucide-react'
 import { addDays, addYears, addMonths, format } from 'date-fns'
 import { Calendar } from './ui/calendar'
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
-export default function FDCalculator({ title, cta, ctaLink }: { title: string, cta: string, ctaLink: string}) {
+const RatesModal = () => {
+  return (
+    <Dialog>
+      <DialogTrigger>
+        <a className='flex items-center font-semibold'>
+          Click here&nbsp;
+        </a>
+      </DialogTrigger>
+      <DialogContent className='bg-white max-h-[80%] overflow-auto' style={{ maxWidth: '840px' }}>
+        <div className="grid md:grid-cols-5 sm items-stretch">
+          <div className="p-6 bg-[#FBFAF4] border border-r-[1px] col-span-2 h-full">
+            <div>
+              <h5 className='mb-4'>TODO</h5>
+              <p>{1000}</p>
+            </div>
+            <div className='text-sm mt-16'>
+              Based on aggregating your PMC account(s) in the Same capacity and same right as per DICGC settlement procedure, and after adjusting any dues; subject to claim approval by DICGC
+              <br /><br />
+              *  Including interest accrued till 31st March 2021
+              <br /><br />
+              ** Subject to claim approval & receipt of funds from DICG
+            </div>
+          </div>
+          <div className="col-span-3 p-12">
+            add stuff here
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+export default function FDCalculator({ title, cta, ctaLink }: { title: string, cta: string, ctaLink: string }) {
   const [depositType, setDepositType] = React.useState('fd-monthly-interest')
   const [depositAmount, setDepositAmount] = React.useState(10000)
   const [years, setYears] = React.useState(1)
@@ -41,19 +78,19 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   }, [years, months, days]);
 
   React.useEffect(() => {
-    if(videoRef.current && depositAmount > 0) {
+    if (videoRef.current && depositAmount > 0) {
       const minp = 0;
       const maxp = 100;
-    
+
       // The result should be between 100 an 10000000
       const minv = Math.log(10000);
       var maxv = Math.log(20000000);
-    
+
       // calculate adjustment factor
       const scale = (maxv - minv) / (maxp - minp);
       const pos = minp + (Math.log(depositAmount) - minv) / scale;
-      let currentTime = videoRef.current.duration * (pos/100);
-      if(currentTime == 0){
+      let currentTime = videoRef.current.duration * (pos / 100);
+      if (currentTime == 0) {
         currentTime = 0.05
       }
       videoRef.current.currentTime = currentTime;
@@ -61,13 +98,13 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   }, [depositAmount])
 
   React.useEffect(() => {
-      //@ts-ignore
-      const res = addYears(date, parseInt(years));
-      //@ts-ignore
-      const res1 =  addMonths(res, parseInt(months));
-      //@ts-ignore
-      const maturityDate = addDays(res1, parseInt(days));
-      setMaturityDate(maturityDate)
+    //@ts-ignore
+    const res = addYears(date, parseInt(years));
+    //@ts-ignore
+    const res1 = addMonths(res, parseInt(months));
+    //@ts-ignore
+    const maturityDate = addDays(res1, parseInt(days));
+    setMaturityDate(maturityDate)
   }, [date, years, months, days]);
 
   // Fetch interest rates based on deposit type
@@ -117,7 +154,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
           returnAmount = depositAmount * tenure * (interestRate / 100);
           break;
       }
-      
+
       // Quarterly compounding
       // returnAmount = depositAmount * Math.pow(1 + (interestRate / 400), tenure * 4);
 
@@ -167,18 +204,18 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
   }
 
   const handleDepositSlider = (e: number[]) => {
-    if(videoRef.current) {
+    if (videoRef.current) {
       const minp = 0;
       const maxp = 100;
-    
+
       // The result should be between 100 an 10000000
       const minv = Math.log(10000);
       var maxv = Math.log(20000000);
-    
+
       // calculate adjustment factor
       const scale = (maxv - minv) / (maxp - minp);
       const pos = minp + (Math.log(e[0]) - minv) / scale;
-      const currentTime = videoRef.current.duration * (pos/100);
+      const currentTime = videoRef.current.duration * (pos / 100);
       videoRef.current.currentTime = currentTime;
     }
   }
@@ -190,20 +227,20 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
 
         <div className="flex flex-col md:flex-row sm:items-center sm:justify-between sm:flex-row flex-column gap-2">
           <div>
-          <p className="text-lg">Type of Deposit</p>
+            <p className="text-lg">Type of Deposit</p>
           </div>
           <div>
-          <Select onValueChange={(val) => setDepositType(val)} value={depositType}>
-            <SelectTrigger className="w-60">
-              <SelectValue placeholder="Select deposit type" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="fd-monthly-interest">Monthly Interest</SelectItem>
-              <SelectItem value="fd-quarterly-interest">Quarterly Interest</SelectItem>
-              <SelectItem value="fd-short-term">Short Term</SelectItem>
-              <SelectItem value="fd-reinvestment">Re-investment Plan</SelectItem>
-            </SelectContent>
-          </Select>
+            <Select onValueChange={(val) => setDepositType(val)} value={depositType}>
+              <SelectTrigger className="w-60">
+                <SelectValue placeholder="Select deposit type" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="fd-monthly-interest">Monthly Interest</SelectItem>
+                <SelectItem value="fd-quarterly-interest">Quarterly Interest</SelectItem>
+                <SelectItem value="fd-short-term">Short Term</SelectItem>
+                <SelectItem value="fd-reinvestment">Re-investment Plan</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
@@ -212,15 +249,15 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
             <p className="text-lg">Deposit amount</p>
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-lg">₹</span>
-              <Input 
+              <Input
                 type="text"
                 value={formatToIndianCurrency(depositAmount)}
                 onChange={(e: any) => {
-                  const rawValue =  e.target.value;
+                  const rawValue = e.target.value;
                   const pureNumber = rawValue.replace(/,/g, '');
                   let val = parseInt(pureNumber);
-                  
-                  if (isNaN(val)){
+
+                  if (isNaN(val)) {
                     val = 0
                   }
                   setDepositAmount(val)
@@ -233,7 +270,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
           </div>
           <div className='py-4'>
             <div className="mb-2">
-              <Slider 
+              <Slider
                 defaultValue={[10000]}
                 value={[depositAmount]}
                 min={10000}
@@ -254,7 +291,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
             <p className="text-lg">Tenure</p>
             <div className="flex gap-1 sm:gap-3">
               {
-                depositType !== "fd-short-term" && 
+                depositType !== "fd-short-term" &&
                 <Select onValueChange={(e: any) => setYears(e)} value={String(years)}>
                   <SelectTrigger>
                     <SelectValue placeholder={years + " Years"} />
@@ -319,7 +356,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
                 onSelect={(date: Date) => {
                   setDate(date);
                   setCalendarOpen(false);
-                } }
+                }}
                 initialFocus
                 className='w-auto'
               />
@@ -330,6 +367,10 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
         <div className="flex items-center justify-between">
           <p className="text-lg">Are you a Senior Citizen?</p>
           <Switch onCheckedChange={(value) => setIsSeniorCitizen(value => !value)} />
+        </div>
+
+        <div>
+        * The interest rates shown are only for an estimation, to see actual interest rates <RatesModal/>
         </div>
 
       </Controls>
