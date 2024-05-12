@@ -47,10 +47,10 @@ const RatesModalComponent = ({ interestRates }: RateModalProps) => {
       </DialogTrigger>
       <DialogContent className='bg-white max-h-[80%] overflow-hidden' style={{ maxWidth: '840px' }}>
         <div className="p-4 flex flex-col">
-        <div className='text-2xl font-semibold'>Fixed Deposit Rates</div>
+          <div className='text-2xl font-semibold'>Fixed Deposit Rates</div>
           <div className="pt-4 relative h-80 overflow-auto">
-            <table className="table-auto border-x border-b w-full">
-              <thead className="sticky">
+            <table className="table-auto border-x border-y w-full">
+              <thead>
                 <tr>
                   <th className="font-bold p-2 border-b border-l  text-left bg-[#FBFAF4] border-bg-[#FBFAF4]">Tenure</th>
                   <th className="font-bold p-2 border-b border-l text-left  bg-[#FBFAF4] border-bg-[#FBFAF4]">General Rate</th>
@@ -68,6 +68,13 @@ const RatesModalComponent = ({ interestRates }: RateModalProps) => {
               </tbody>
             </table>
           </div>
+          <ol className="p-3 mt-5 list-decimal" type="1">
+            <li>For terms & conditions and any other detail, please contact Unity SFB branch officials.</li>
+            <li>Interest rates are subject to change without prior notice.</li>
+            <li>The above card rates are applicable for recurring deposits (Specific Tenors).</li>
+            <li>For premature withdrawal of fixed deposit and recurring deposits, a premature penalty of 1.00% shall be charged to the rate applicable for the period the deposit has remained with the bank, or the contracted rate, whichever is lower.</li>
+            <li>We hereby offer 1% more over Card Rates to Unity SFB employees.</li>
+          </ol>
         </div>
       </DialogContent>
     </Dialog>
