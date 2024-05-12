@@ -103,7 +103,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
       // calculate adjustment factor
       const scale = (maxv - minv) / (maxp - minp);
       const pos = minp + (Math.log(depositAmount) - minv) / scale;
-      let currentTime = videoRef.current.duration * (pos / 100);
+      let currentTime = pos > 0 ? videoRef.current.duration * (pos / 100) : 0;
       if (currentTime == 0) {
         currentTime = 0.05
       }
