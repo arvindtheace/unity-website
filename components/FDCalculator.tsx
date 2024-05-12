@@ -45,7 +45,7 @@ const RatesModalComponent = ({ interestRates }: RateModalProps) => {
           Click here&nbsp;
         </a>
       </DialogTrigger>
-      <DialogContent className='bg-white max-h-[80%] overflow-hidden' style={{ maxWidth: '840px' }}>
+      <DialogContent className='bg-white max-h-[80%] overflow-auto' style={{ maxWidth: '840px' }}>
         <div className="p-4 flex flex-col">
           <div className='text-2xl font-semibold'>Fixed Deposit Rates</div>
           <div className="pt-4 relative h-80 overflow-auto">
