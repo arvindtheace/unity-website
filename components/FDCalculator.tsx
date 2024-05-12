@@ -36,7 +36,7 @@ type RateModalProps = {
   interestRates: RateProps[]
 }
 
-const RatesModal = ({ interestRates }: RateModalProps ) => {
+const RatesModalComponent = ({ interestRates }: RateModalProps) => {
   console.log({ interestRates });
   return (
     <Dialog>
@@ -45,29 +45,36 @@ const RatesModal = ({ interestRates }: RateModalProps ) => {
           Click here&nbsp;
         </a>
       </DialogTrigger>
-      <DialogContent className='bg-white max-h-[80%] overflow-auto' style={{ maxWidth: '840px' }}>
-        <div className="grid md:grid-cols-5 sm items-stretch">
-          <div className="p-6 bg-[#FBFAF4] border border-r-[1px] col-span-2 h-full">
-            <div>
-              <h5 className='mb-4'>TODO</h5>
-              <p>{1000}</p>
-            </div>
-            <div className='text-sm mt-16'>
-              Based on aggregating your PMC account(s) in the Same capacity and same right as per DICGC settlement procedure, and after adjusting any dues; subject to claim approval by DICGC
-              <br /><br />
-              *  Including interest accrued till 31st March 2021
-              <br /><br />
-              ** Subject to claim approval & receipt of funds from DICG
-            </div>
-          </div>
-          <div className="col-span-3 p-12">
-            add stuff here
+      <DialogContent className='bg-white max-h-[80%] overflow-hidden' style={{ maxWidth: '840px' }}>
+        <div className="p-4 flex flex-col">
+        <div className='text-2xl font-semibold'>Fixed Deposit Rates</div>
+          <div className="pt-4 relative h-80 overflow-auto">
+            <table className="table-auto border-x border-b w-full">
+              <thead className="sticky">
+                <tr>
+                  <th className="font-bold p-2 border-b border-l  text-left bg-[#FBFAF4] border-bg-[#FBFAF4]">Tenure</th>
+                  <th className="font-bold p-2 border-b border-l text-left  bg-[#FBFAF4] border-bg-[#FBFAF4]">General Rate</th>
+                  <th className="font-bold py-2 px-4 border-b border-l text-left  bg-[#FBFAF4] border-bg-[#FBFAF4]">Senior Rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                {interestRates?.map((item: any, index: number) => (
+                  <tr key={index}>
+                    <td className="p-2 border-b text-left">{item.tenure}</td>
+                    <td className="p-2 border-b text-left">{item.generalRate} %</td>
+                    <td className="py-2 px-4 border-b text-left">{item.seniorRate} %</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </DialogContent>
     </Dialog>
   )
 }
+
+const RatesModal = React.memo(RatesModalComponent);
 
 export default function FDCalculator({ title, cta, ctaLink }: { title: string, cta: string, ctaLink: string }) {
   const [depositType, setDepositType] = React.useState('fd-monthly-interest')
@@ -384,7 +391,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
         </div>
 
         <div>
-        * The interest rates shown are only for an estimation, to see actual interest rates <RatesModal interestRates={interestRateMap}/>
+          * The interest rates shown are only for an estimation, to see actual interest rates <RatesModal interestRates={interestRateMap} />
         </div>
 
       </Controls>
