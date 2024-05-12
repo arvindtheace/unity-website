@@ -23,7 +23,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 
-const RatesModal = () => {
+type RateProps = {
+  generalRate: number
+  maxDays: number
+  minDays: number
+  reference: string
+  seniorRate: number
+  tenure: string
+}
+
+type RateModalProps = {
+  interestRates: RateProps[]
+}
+
+const RatesModal = ({ interestRates }: RateModalProps ) => {
+  console.log({ interestRates });
   return (
     <Dialog>
       <DialogTrigger>
@@ -370,7 +384,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
         </div>
 
         <div>
-        * The interest rates shown are only for an estimation, to see actual interest rates <RatesModal/>
+        * The interest rates shown are only for an estimation, to see actual interest rates <RatesModal interestRates={interestRateMap}/>
         </div>
 
       </Controls>
