@@ -945,3 +945,10 @@ Builder.registerComponent(
     ],
   }
 );
+
+Builder.registerComponent(
+  dynamic(() => import("./components/DigitalLendingPartners")),
+  {
+    name: "DigitalLendingPartners"
+  }
+)
