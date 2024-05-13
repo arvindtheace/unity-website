@@ -23,6 +23,10 @@ export default function Footer() {
             <Link href="/personal/recurring-deposit">Recurring Deposit</Link>
             <Link href="/personal/lockers">Lockers</Link>
             <Link href="/personal/nri-banking">NRI Banking</Link>
+            <Link href="/personal/pearl-account">Pearl Account</Link>
+            <Link href="/personal/seniors-account">Seniors Account</Link>
+            <Link href="/personal/doorstep-banking">Doorstep Banking</Link>
+            <Link href="/personal/debit-card">Debit Card</Link>
           </div>
           <div className='flex flex-col gap-3 mb-6'>
             <div className='font-semibold'>Borrow</div>
@@ -123,10 +127,10 @@ const FooterContainer = styled.footer`
 
   & a {
     width: fit-content;
-    color: rgba(255,255,255,0.7);
+    color: #B5B5B5;
   }
 
   & a:hover {
-    color: rgba(255,255,255,0.85);
+    color: #FFF;
   }
 `
