@@ -54,7 +54,7 @@ export default function DigitalLendingPartners() {
                                 </Button>
                             </DialogTrigger>
                             {/* bg-[#FBFAF4]  grid md:grid-cols-5*/}
-                            <DialogContent className='bg-white min-h-[80%] overflow-auto' style={{ maxWidth: '840px' }}>
+                            <DialogContent className='bg-white overflow-auto' style={{ maxWidth: '840px', minHeight: '500px' }}>
                                 <div className="grid grid-cols-1 sm:grid-cols-5 items-stretch">
                                     <div className="flex flex-col items-center justify-center p-6 bg-[#FBFAF4] sm:border sm:border-r-[1px] col-span-2 h-full w-full">
                                         <img src={data.darkLogo} />
@@ -63,7 +63,7 @@ export default function DigitalLendingPartners() {
                                     </div>
                                     <div className="flex flex-col col-span-3 items-stretch">
                                         <div className="h-full p-10">
-                                            <div className="border rounded h-3/4 p-3 sm:p-6">
+                                            <div className="border rounded h-fit p-3 sm:p-6">
                                                 <div className="text-lg font-semibold">{data.contactHeader}</div>
                                                 <Title>{data.personTitle}:</Title>
                                                 <Value>{data.personName}</Value>
@@ -108,14 +108,14 @@ const LenderType = styled.div`
 const Title = styled.div`
     color: #000;
     opacity: 0.62;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 15px;
     margin-bottom: 5px;
 `
 
 const Value = styled.div`
     color: #000;
-    font-size: 16px;
+    font-size: 15px;
     margin-top: 5px;
     margin-bottom: 5px;
 `
