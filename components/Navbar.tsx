@@ -20,7 +20,6 @@ const Navbar = ({ color } : { color: string; }) => {
           </div>
           <div className="flex items-center space-x-4 md:space-x-8">
             <WhatsNew color={color} />
-            <div className="hidden lg:block text-right"><Button text="Login" type="tertiary" href="/" /></div>
             <div className='lg:hidden'><MobileNav style={color} /></div>
           </div>
         </div>

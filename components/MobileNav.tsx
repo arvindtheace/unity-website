@@ -104,9 +104,6 @@ export default function MobileNav({
             <X />
           </a>
         </div>
-        <div className="absolute w-full bottom-0 left-0 p-4">
-          <Button text="Login" type="tertiary" href="/" width="full" icon="arrow-right" />
-        </div>
         {
           page === "main" &&
           <div className="flex flex-col justify-center items-center gap-8 h-full">
