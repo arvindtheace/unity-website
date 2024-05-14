@@ -30,7 +30,7 @@ function PDFList({ name, searchAlign = "left", hasFilter }: Props) {
   const containerRef = React.useRef<HTMLDivElement | null>(null);
 
   const itemsPerPage = 10; // Number of items to display per page
-  const years = Array.from({ length: new Date().getFullYear() - 1999 }, (_, index) => (new Date().getFullYear() - index).toString());
+  const years = Array.from({ length: new Date().getFullYear() - 2018 }, (_, index) => (new Date().getFullYear() - index).toString());
 
   React.useEffect(() => {
     builder
