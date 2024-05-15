@@ -44,26 +44,12 @@ export default function ProgressCarousel({ sections }: { sections: Sections }) {
   return (
     <div>
       <div className='max-w-2xl mx-auto mb-12'>
-      <Progress.Root
-        className="relative overflow-hidden bg-white rounded-full w-full h-[15px]"
-        // style={{
-        //   // Fix overflow clipping in Safari
-        //   // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
-        //   transform: 'translateZ(0)',
-        // }}
-        value={progress}
-      >
-        <Progress.Indicator
-          className="bg-[#EE9D00] w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.65, 0, 0.35, 1)]"
-          style={{ transform: `translateX(-${100 - (progress)}%)` }}
-        />
-      </Progress.Root>
         <div className="flex items-center justify-around">
           {
             sections.map((section, i) => (
-              <h5 
+              <h5
                 key={`carousel-section-${i}`}
-                className='cursor-pointer p-8'
+                className='cursor-pointer p-6 sm:p-8'
                 onClick={() => api?.scrollTo(section.startingSlideNumber)}
               >
                 {section.title}
@@ -71,6 +57,20 @@ export default function ProgressCarousel({ sections }: { sections: Sections }) {
             ))
           }
         </div>
+        <Progress.Root
+          className="relative overflow-hidden bg-white rounded-full w-full h-[15px]"
+          // style={{
+          //   // Fix overflow clipping in Safari
+          //   // https://gist.github.com/domske/b66047671c780a238b51c51ffde8d3a0
+          //   transform: 'translateZ(0)',
+          // }}
+          value={progress}
+        >
+          <Progress.Indicator
+            className="bg-[#EE9D00] w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.65, 0, 0.35, 1)]"
+            style={{ transform: `translateX(-${100 - (progress)}%)` }}
+          />
+        </Progress.Root>
       </div>
       <Carousel
         setApi={setApi}
