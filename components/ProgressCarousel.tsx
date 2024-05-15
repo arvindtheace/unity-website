@@ -93,6 +93,7 @@ export default function ProgressCarousel({ sections }: { sections: Sections }) {
                         text='Know More'
                         type='link'
                         action='link'
+                        linkType="external"
                         href={item.link}
                         width='fit'
                         icon="arrow-right"
