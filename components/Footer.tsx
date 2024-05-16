@@ -7,12 +7,10 @@ import { ChevronRight } from 'lucide-react'
 export default function Footer() {
   return (
     <FooterContainer className='p-8 md:p-16 mt-8 md:mt-16'>
-      
       <div className='grid grid-cols-2 md:grid-cols-6 mb-24'>
         <div className='col-span-2 md:col-span-1 grid place-items-center md:block mb-8 md:mb-0'>
           <Logo style="dark" />
         </div>
-        
         <div>
           <div className="text-lg font-semibold mb-6">Personal</div>
           <div className='flex flex-col gap-3 mb-6'>
@@ -52,15 +50,6 @@ export default function Footer() {
           <Link href="/inclusive-banking">
             <div className="text-lg font-semibold text-white mb-6">Inclusive <ChevronRight size={18} className='inline mb-[2px]' /></div>
           </Link>
-          <div className="text-lg font-semibold mb-6">Calculators</div>
-          <div className='flex flex-col gap-3 mb-6'>
-            <Link href="/">FD Calculator</Link>
-            <Link href="/">RD Calculator</Link>
-            <Link href="/">EMI Calculator</Link>
-          </div>
-        </div>
-
-        <div>
           <div className="text-lg font-semibold mb-6">Company</div>
           <div className='flex flex-col gap-3 mb-6'>
             <Link href="/about-us">About Unity</Link>
@@ -75,26 +64,32 @@ export default function Footer() {
         </div>
 
         <div>
-          <div className="text-lg font-semibold mb-6">Useful Links</div>
+          <div className="text-lg font-semibold mb-6">Calculators</div>
           <div className='flex flex-col gap-3 mb-6'>
-          <Link href="/important-documents">Important Documents</Link>
-          <Link href="/download-forms">Download Forms</Link>
-          <Link href="/terms-and-conditions">Terms & Conditions</Link>
-          <Link href="/privacy-policy">Privacy Policy</Link>
-          <Link href="/faqs">FAQs</Link>
-          <Link href="/blog">Blogs</Link>
-          <Link href="/general-disclaimer">General Disclaimer</Link>
-          <Link href="/rbi-disclaimer">RBI Disclaimer</Link>
-          <Link href="/gstin">GSTIN</Link>
+            <Link href="/">FD Calculator</Link>
+            <Link href="/">RD Calculator</Link>
+            <Link href="/">EMI Calculator</Link>
           </div>
-        </div>
-        
-        <div>
           <div className="text-lg font-semibold mb-6">Connect with us</div>
           <div className='flex flex-col gap-3 mb-6'>
             <Link href="/contact-us">Contact Us</Link>
             <Link href="/media-centres">Media Centres</Link>
             <Link href="/forms">Feedback Form</Link>
+          </div>
+        </div>
+
+        <div>
+          <div className="text-lg font-semibold mb-6">Useful Links</div>
+          <div className='flex flex-col gap-3 mb-6'>
+            <Link href="/important-documents">Important Documents</Link>
+            <Link href="/download-forms">Download Forms</Link>
+            <Link href="/terms-and-conditions">Terms & Conditions</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
+            <Link href="/faqs">FAQs</Link>
+            <Link href="/blog">Blogs</Link>
+            <Link href="/general-disclaimer">General Disclaimer</Link>
+            <Link href="/rbi-disclaimer">RBI Disclaimer</Link>
+            <Link href="/gstin">GSTIN</Link>
           </div>
         </div>
 
