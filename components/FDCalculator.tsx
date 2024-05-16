@@ -327,7 +327,7 @@ export default function FDCalculator({ title, cta, ctaLink }: { title: string, c
                   <SelectContent>
                     {
                       Array.from({ length: 10 }, (_, i) => (
-                        <SelectItem key={i} value={String(i + 1)}>{i + 1} Years</SelectItem>
+                        <SelectItem key={i} value={String(i)}>{i} Years</SelectItem>
                       ))
                     }
                   </SelectContent>
