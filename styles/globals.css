@@ -320,3 +320,8 @@ ul[role="navigation"] li {
     place-items: center;
   }
 }
+
+.paralink {
+  color: #B25600;
+  text-decoration: underline;
+}
