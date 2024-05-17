@@ -23,19 +23,19 @@ export default function ProgressCarousel({ sections }: { sections: Sections }) {
   const [progress, setProgress] = React.useState(0)
   const [current, setCurrent] = React.useState(0)
   const [count, setCount] = React.useState(0)
-  
+
   React.useEffect(() => {
-    setProgress((current/count) * 100)
+    setProgress((current / count) * 100)
   }, [current])
 
   React.useEffect(() => {
     if (!api) {
       return
     }
- 
+
     setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
- 
+
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1)
     })
@@ -85,26 +85,28 @@ export default function ProgressCarousel({ sections }: { sections: Sections }) {
             sections.map((section, i) => (
               section.cards.map((item, j) => (
                 <CarouselItem key={j} className="md:basis-2/5">
-                  <div className='white-card relative h-full'>
-                    <div className={`badge rounded-lg mb-4 ${section.title.toLowerCase()}`}>{section.title}</div>
-                    <div className='sm mb-6' dangerouslySetInnerHTML={{__html:item.content}} />
-                    <div className="mb-28">
-                      <Button
-                        text='Know More'
-                        type='link'
-                        action='link'
-                        linkType="external"
-                        href={item.link}
-                        width='fit'
-                        icon="arrow-right"
-                      />
+                  <a href={item.link} target="_blank" rel="noreferrer">
+                    <div className='white-card relative h-full'>
+                      <div className={`badge rounded-lg mb-4 ${section.title.toLowerCase()}`}>{section.title}</div>
+                      <div className='sm mb-6' dangerouslySetInnerHTML={{ __html: item.content }} />
+                      <div className="mb-28">
+                        <Button
+                          text='Know More'
+                          type='link'
+                          action='link'
+                          linkType="external"
+                          href={item.link}
+                          width='fit'
+                          icon="arrow-right"
+                        />
+                      </div>
+                      <div dangerouslySetInnerHTML={{ __html: item.illustration }} className='absolute bottom-6 right-6' />
                     </div>
-                    <div dangerouslySetInnerHTML={{__html: item.illustration}} className='absolute bottom-6 right-6'/>
-                  </div>
+                  </a>
                 </CarouselItem>
               )
-            )
-          ))}
+              )
+            ))}
         </CarouselContent>
       </Carousel>
     </div>
