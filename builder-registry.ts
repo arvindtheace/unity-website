@@ -270,7 +270,7 @@ Builder.registerComponent(
           },
           {
             name: "answer",
-            type: "text",
+            type: "html",
             required: true,
             defaultValue: "Answer",
           },

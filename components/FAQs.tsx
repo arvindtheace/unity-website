@@ -22,14 +22,15 @@ export default function FAQs({ theme = "light", faqs }: FAQs) {
       <Accordion type="single" collapsible>
         {
           faqs.map((faq, index) => {
+            const { question, answer } = faq;
             return (
               <div key={index}>
                 <AccordionItem value={index.toString()} className='max-w-4xl mx-auto py-8'>
                   <AccordionTrigger className='text-left'>
-                    <p className='text-xl pr-8'>{faq.question}</p>
+                    <p className='text-xl pr-8'>{question}</p>
                   </AccordionTrigger>
                   <AccordionContent>
-                    <p>{faq.answer}</p>
+                    <p dangerouslySetInnerHTML={{ __html: answer }} />
                   </AccordionContent>
                 </AccordionItem>
               </div>
