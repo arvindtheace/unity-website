@@ -24,16 +24,16 @@ const ColorChangingSectionComponent = ({ beforeColor, bgColor, text, children }:
         start: "top 40%",
         end: "bottom 50%",
         onEnter: () => {
-          gsap.to(bgRef.current, { width: '100vw', height: '200vh', ease: "power2.inOut", duration: 0.5 })
+          gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
           setTimeout(() => {
             document.body.style.backgroundColor = bgColor;
-          }, 300)
+          }, 100)
         },
         onLeaveBack: () => {
           gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
           setTimeout(() => {
             document.body.style.backgroundColor = beforeColor;
-          }, 300)
+          }, 100)
         }
       },
     });
