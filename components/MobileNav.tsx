@@ -171,6 +171,7 @@ const MobileMenuContainer = styled.div<{isOpen: boolean;}>`
   z-index: 100;
   transform: ${({isOpen}) => isOpen ? "translateX(0)" : "translateX(100%)"};
   transition: transform 0.15s ease-in-out;
+  overflow: auto;
 `
 
 const NavItem = styled.a`
