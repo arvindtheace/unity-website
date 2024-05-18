@@ -11,7 +11,7 @@ import Button from './Button'
 import { builder } from '@builder.io/react';
 import clsx from 'clsx';
 import { formatDistanceToNow } from 'date-fns';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
@@ -77,10 +77,15 @@ type Blogs = {
 // ]
 
 export default function BlogPreview2({ size = "small", blogs }: any) {
-
+  if (!blogs) {
+    return <div></div>
+  }
+  const pathname = usePathname();
   return (
     <div className='my-20 max-w-full'>
-      <h2 className='mb-16'>Our blogs and stories</h2>
+      <h2 className='mb-16'
+      style={{color: pathname?.startsWith('/business') ? '#FFF' : '#000'}}
+      >Our blogs and stories</h2>
       <Carousel
         opts={{
           align: "start",
@@ -89,63 +94,12 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
         className="w-full pb-20"
       >
         <CarouselContent className='items-stretch'>
-          {/* {
-            blogsSeed.map((_: any, index: number) => (
-              <CarouselItem key={index} className={clsx(
-                size === "small" && `basis-4/5 ${_.type === 'story' ? 'md:basis-1/2' : 'md:basis-1/3'}`,
-                size === "large" && `basis-full`
-              )}>
-                <BlogCard className='h-full'>
-                  {
-                    size === "large" ? (
-                      <div className='card grid grid-cols-7'>
-                        <div className='col-span-4 p-10 my-auto'>
-                          <h4 className='font-semibold mb-4'>{_.title}</h4>
-                          <div className="flex items-center gap-4 mb-6">
-                            <p className='uppercase text-[#B97A00] font-semibold tracking-wider'>{_.type}</p>
-                            <p className='text-gray-500'>{_.readTime} min read&nbsp;&nbsp;|&nbsp;&nbsp;{formatDistanceToNow(_.date, { addSuffix: true })}</p>
-                          </div>
-                          <div className="sm mb-6">
-                            <p>{_.excerpt}</p>
-                          </div>
-                          <Button
-                            text="Read more"
-                            type="link"
-                            href={`/blog/${_.slug}`}
-                            icon="arrow-right"
-                          />
-                        </div>
-                        <div
-                          style={{backgroundImage: `url(${_.image})`}}
-                          className="col-span-3 bg-cover bg-center h-96"
-                        />
-                      </div>
-                    ) : (
-                      <>
-                        <div 
-                          style={{backgroundImage: `url(${_.image})`}}
-                          className={`relative bg-cover bg-center w-full h-72 ${_.type === 'blog' ? 'aspect-square' : 'aspect-video'}`}
-                        >
-                          <Badge className='absolute top-4 left-4'>{_.type.toUpperCase()}</Badge>
-                        </div>
-                        <div className='p-6'>
-                          <h6 className='mb-6'>{_.title}</h6>
-                          <div className='text-gray-500 mb-6'>{_.readTime} min read | 1 day ago</div>
-                        </div>
-                      </>
-                    )
-                  }
-                </BlogCard>
-              </CarouselItem>
-            ))
-          }  */}
           {blogs.length > 0 && blogs.map((_: any, index: number) => {
             let newDate  = new Date(_.article.value?.data.date);
             //@ts-ignore
             const elapsedTime = isNaN(newDate) ? '' : formatDistanceToNow(newDate, { addSuffix: true });
             return (
             //TODO: wrap with <a>
-            <a href={`${_.article.value?.previewUrl}`} key={index}>
             <CarouselItem key={index} className={clsx(
                 size === "small" && `basis-4/5 ${_.article.value?.data.type === 'story' ? 'md:basis-1/2' : 'md:basis-1/3'}`,
                 size === "large" && `basis-full`
@@ -153,7 +107,7 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
                 <BlogCard className='h-full'>
                   {
                     size === "large" ? (
-                      <div className='card grid grid-cols-7'>
+                      <a href={`${_.article.value?.previewUrl}`} className='card grid grid-cols-7'>
                         <div className='col-span-4 p-10 my-auto'>
                           <h4 className='font-semibold mb-4'>{_.article.value?.data.title}</h4>
                           <div className="flex items-center gap-4 mb-6">
@@ -174,9 +128,9 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
                           style={{backgroundImage: `url(${_.article.value?.data.image})`}}
                           className="col-span-3 bg-cover bg-center h-96"
                         />
-                      </div>
+                      </a>
                     ) : (
-                      <>
+                      <a href={`${_.article.value?.previewUrl}`}>
                         <div 
                           style={{backgroundImage: `url(${_.article.value?.data.image})`}}
                           className={`relative bg-cover bg-center w-full h-72 ${_.article.value?.data.type === 'blog' ? 'aspect-square' : 'aspect-video'}`}
@@ -187,12 +141,11 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
                           <h6 className='mb-6'>{_.article.value?.data.title}</h6>
                           <div className='text-gray-500 mb-6'>{_.article.value?.data.readTime} min read&nbsp;&nbsp;|&nbsp;&nbsp;{elapsedTime}</div>
                         </div>
-                      </>
+                      </a>
                     )
                   }
                 </BlogCard>
               </CarouselItem>
-            </a>
           )}
         )
       }
