@@ -22,7 +22,7 @@ export const CompanyMenu = forwardRef<HTMLElement>((props, ref) => {
         {items.map((item: any) => (
           <StyledLink key={item.link}>
             <a className="flex items-center space-x-4" href={item.link}>
-              <div dangerouslySetInnerHTML={{__html:item.icon}} />
+              <div className='hover_bg bg_brown p-2' dangerouslySetInnerHTML={{__html:item.icon}} />
               <p className="text-sm font-medium">{item.title}</p>
             </a>
           </StyledLink>
@@ -41,5 +41,16 @@ const StyledLink = styled.a`
     position: relative;
     top: 2px;
     right: -5px;
+  }
+
+  .hover_bg {
+    border-radius: 50%;
+    transition: 0.2s ease;
+  }
+
+  &:hover .hover_bg {
+    &.bg_brown {
+      background: #C99E0514;
+    }
   }
 `

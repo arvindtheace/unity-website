@@ -72,7 +72,7 @@ export const PersonalMenu = forwardRef<HTMLElement>((props, ref) => {
           {personalSelectedIndex === 0 && save?.map((item: any) => (
             <StyledLink bgColor="#F1FAF2" key={item.link}>
               <a className="flex items-center space-x-6" href={item.link}>
-                <div dangerouslySetInnerHTML={{__html:item.icon}} />
+                <div className='hover_bg bg_green p-2' dangerouslySetInnerHTML={{__html:item.icon}} onMouseEnter={() => setPersonalSelectedIndex(0)}/>
                 <p className="text-sm font-medium">{item.title}</p>
               </a>
             </StyledLink>
@@ -80,7 +80,7 @@ export const PersonalMenu = forwardRef<HTMLElement>((props, ref) => {
           {personalSelectedIndex === 1 && borrow?.map((item: any) => (
             <StyledLink bgColor="#FBF4FE" key={item.link}>
               <a className="flex items-center space-x-6" href={item.link}>
-                <div dangerouslySetInnerHTML={{__html:item.icon}} />
+                <div className='hover_bg bg_purple p-2' dangerouslySetInnerHTML={{__html:item.icon}} />
                 <p className="text-sm font-medium">{item.title}</p>
               </a>
             </StyledLink>
@@ -88,7 +88,7 @@ export const PersonalMenu = forwardRef<HTMLElement>((props, ref) => {
           {personalSelectedIndex === 2 && insure?.map((item: any) => (
             <StyledLink bgColor="#ECFBFC" key={item.link} className="col-span-2">
               <a className="flex items-center space-x-6" href={item.link}>
-                <div dangerouslySetInnerHTML={{__html:item.icon}} />
+                <div className='hover_bg bg_blue p-2' dangerouslySetInnerHTML={{__html:item.icon}} />
                 <p className="text-sm font-medium">{item.title}</p>
               </a>
             </StyledLink>
@@ -108,5 +108,22 @@ const StyledLink = styled.a<{ bgColor: string }>`
     position: relative;
     top: 2px;
     right: -5px;
+  }
+
+  .hover_bg {
+    border-radius: 50%;
+    transition: 0.2s ease;
+  }
+
+  &:hover .hover_bg {
+    &.bg_green {
+      background: #F1FAF2;
+    }
+    &.bg_purple {
+      background: #FBF4FE;
+    }
+    &.bg_blue {
+      background: #ECFBFC;
+    }
   }
 `
