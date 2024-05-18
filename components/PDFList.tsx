@@ -113,7 +113,7 @@ function PDFList({ name, searchAlign = "left", hasFilter }: Props) {
 
   return (
     <div ref={containerRef} className='py-10'>
-      <div className="flex items-center justify-between mb-12">
+      <div className="flex items-center justify-between mb-12 gap-3">
         <Input
           type="text"
           placeholder="Search"
@@ -127,7 +127,7 @@ function PDFList({ name, searchAlign = "left", hasFilter }: Props) {
         {hasFilter && (
           <div>
             <Select value={yearFilter} onValueChange={(value) => handleFilterChange(value)}>
-              <SelectTrigger className="max-w-lg p-0 border-0">
+              <SelectTrigger className="max-w-lg p-0 border-0 shadow-none">
                 <SelectValue placeholder="Select a year" />
               </SelectTrigger>
               <SelectContent className='bg-white'>
