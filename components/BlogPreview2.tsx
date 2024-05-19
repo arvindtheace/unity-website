@@ -107,8 +107,12 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
                 <BlogCard className='h-full'>
                   {
                     size === "large" ? (
-                      <a href={`${_.article.value?.previewUrl}`} className='card grid grid-cols-7'>
-                        <div className='col-span-4 p-10 my-auto'>
+                      <a href={`${_.article.value?.previewUrl}`} className='card grid grid-cols-1 sm:grid-cols-7'>
+                        <div
+                          style={{backgroundImage: `url(${_.article.value?.data.image})`}}
+                          className="sm:col-span-3 sm:bg-cover sm:bg-center bg-contain bg-no-repeat bg-center h-96 w-full"
+                        />
+                        <div className='sm:col-span-4 sm:order-first sm:p-10 p-4 my-auto'>
                           <h4 className='font-semibold mb-4'>{_.article.value?.data.title}</h4>
                           <div className="flex items-center gap-4 mb-6">
                             <p className='uppercase text-[#B97A00] font-semibold tracking-wider'>{_.article.value?.data.type}</p>
@@ -124,10 +128,6 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
                             icon="arrow-right"
                           />
                         </div>
-                        <div
-                          style={{backgroundImage: `url(${_.article.value?.data.image})`}}
-                          className="col-span-3 bg-cover bg-center h-96"
-                        />
                       </a>
                     ) : (
                       <a href={`${_.article.value?.previewUrl}`}>
