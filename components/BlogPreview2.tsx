@@ -110,7 +110,7 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
                       <a href={`${_.article.value?.previewUrl}`} className='card grid grid-cols-1 sm:grid-cols-7'>
                         <div
                           style={{backgroundImage: `url(${_.article.value?.data.image})`}}
-                          className="sm:col-span-3 sm:bg-cover sm:bg-center bg-contain bg-no-repeat bg-center h-96 w-full"
+                          className="sm:col-span-3 sm:bg-cover sm:bg-center bg-cover bg-no-repeat bg-center h-96 w-full"
                         />
                         <div className='sm:col-span-4 sm:order-first sm:p-10 p-4 my-auto'>
                           <h4 className='font-semibold mb-4'>{_.article.value?.data.title}</h4>
@@ -132,7 +132,7 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
                     ) : (
                       <a href={`${_.article.value?.previewUrl}`}>
                         <div 
-                          style={{backgroundImage: `url(${_.article.value?.data.image})`}}
+                          style={{backgroundImage: `url(${_.article.value?.data.image})`, backgroundSize: 'cover'}}
                           className={`relative bg-cover bg-center w-full h-72 ${_.article.value?.data.type === 'blog' ? 'aspect-square' : 'aspect-video'}`}
                         >
                           <Badge className='absolute top-4 left-4'>{_.article.value?.data.type.toUpperCase()}</Badge>
@@ -168,7 +168,7 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
 }
 
 const BlogCard = styled.div`
-  border-radius: 16px;
+  border-radius: 20px;
   background: #FFF;
   box-shadow: 0px 4px 16px 0px rgba(168, 161, 125, 0.12), 0px 0px 4px 0px rgba(0, 0, 0, 0.10), 0px 0px 1px 0px rgba(0, 0, 0, 0.13);
   overflow: hidden;

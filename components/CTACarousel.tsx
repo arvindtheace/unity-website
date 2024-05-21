@@ -27,7 +27,7 @@ export default function CTACarousel({ items }: Props) {
       <CarouselContent>
         {
             items.map((item: any, i: number) => (
-              <CarouselItem key={item.id} className="basis-1 md:basis-1/3">
+              <CarouselItem key={item.id} className=" md:basis-1/3">
                 <div className='white-card relative'>
                   <h5 className="mb-4">{item.title}</h5>
                   <div className='sm mb-4'>

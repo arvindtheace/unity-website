@@ -87,5 +87,6 @@ const Text = styled.div`
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  width: 1000px;
+  width: 94%;
+  height: fit-content;
 `
