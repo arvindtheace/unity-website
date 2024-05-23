@@ -14,9 +14,9 @@ const FeaturedBlogCarousel: React.FC = ({ blogs }: any) => {
 
   React.useEffect(() => {
     
-    blogs.forEach(element => {
+    blogs.forEach((element:any) => {
       
-      setBlogsContent(blogsContent => [...blogsContent,element.article.value])
+      setBlogsContent((blogsContent:any) => [...blogsContent,element.article.value])
     });
 
   }, []);

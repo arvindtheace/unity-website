@@ -51,6 +51,7 @@ const StyledLink = styled.a`
   &:hover p::after {
     content: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"%3E%3Cpath d="M12.6665 8L8.6665 12M12.6665 8L8.6665 4M12.6665 8L3.33317 8" stroke="black" style="stroke:black;stroke-opacity:1;" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
     position: relative;
+    opacity: 1;
     top: 2px;
     right: -5px;
   }
