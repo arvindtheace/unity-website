@@ -80,7 +80,7 @@ export default function FundRaisingProducts() {
                 {navItems[page].title}
                 <ChevronDown className='absolute right-4 top-1/2 transform -translate-y-1/2' size={18} />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className='bg-white w-full'>
+              <DropdownMenuContent className='bg-white w-full pr-36'>
                 {
                   navItems.map((_, i) => (
                     <DropdownMenuItem 

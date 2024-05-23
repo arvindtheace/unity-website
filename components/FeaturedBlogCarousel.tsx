@@ -14,11 +14,7 @@ const FeaturedBlogCarousel: React.FC = ({ blogs }: any) => {
 
   React.useEffect(() => {
     
-    console.log(blogs)
-    // setBlogsContent(data)
     blogs.forEach(element => {
-      // element.article.value
-      console.log(element.article.value);
       
       setBlogsContent(blogsContent => [...blogsContent,element.article.value])
     });
@@ -66,7 +62,7 @@ const FeaturedBlogCarousel: React.FC = ({ blogs }: any) => {
             {blogsContent.length > 0 && blogsContent.map((_: any, index: number) => (
               <CarouselItem key={index} className="basis-4/5 md:basis-1/3">
                   <div 
-                    className='relative bg-cover rounded-xl h-96'
+                    className='relative bg-cover rounded-xl h-64'
                     style={{ backgroundImage: `url(${_.data.image})` }}
                   >
                     <Badge className='absolute top-4 left-4'>Featured</Badge>
