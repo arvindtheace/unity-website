@@ -118,7 +118,14 @@ export default function MobileNav({
         {
           page === "personal" &&
           <div className="mt-16 p-8">
-            <h5 className="mb-10">Personal banking</h5>
+            <h5 className="mb-10">
+              <a 
+              href="/"
+              
+              
+              className='py-2 px-4 flex items-center'
+              >Personal banking</a>
+            </h5>
             <div className="flex flex-col gap-8">
               {save.map((item: any) => (
                 <Link key={item.link} href={item.link} className="flex items-center space-x-6">
@@ -132,7 +139,14 @@ export default function MobileNav({
         {
           page === "business" &&
           <div className="mt-16 p-8">
-            <h5 className="mb-10">Business banking</h5>
+            <h5 className="mb-10">
+              <a 
+                href="./business"
+                
+                
+                className='py-2 px-4 flex items-center'
+                >Business banking</a>
+              </h5>
             <div className="flex flex-col gap-8">
               {business.map((item:any) => (
                 <Link key={item.link} href={item.link} className="flex items-center space-x-6">

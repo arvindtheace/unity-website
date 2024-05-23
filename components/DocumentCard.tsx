@@ -27,7 +27,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ file, type, link, title, da
             {date && (
               <div className="text-sm mt-4">- {format(date, 'LLLL	do, yyyy')}</div>
             )}
-            <div className="icon absolute top-1/2 right-8">
+            <div className="icon absolute top__24 right-8">
               {type === "pdf" && <Download />}
               {type === "link" && <ArrowRight />}
             </div>
@@ -41,7 +41,7 @@ const DocumentCard: React.FC<DocumentCardProps> = ({ file, type, link, title, da
           {date && (
             <div className="text-gray-500 text-sm mt-4">- {format(date, 'LLLL	do, yyyy')}</div>
           )}
-          <div className="icon absolute top-1/2 right-8">
+          <div className="icon absolute top__24 right-8">
             {type === "pdf" && <Download />}
             {type === "link" && <ArrowRight />}
           </div>
@@ -61,13 +61,13 @@ const PDFCardLight = styled.div`
 
   & .icon {
     opacity: 0;
-    translate: 40% -50%;
+    translate: 40% 0%;
     transition: all 0.3s ease;
   }
 
   &:hover .icon {
     opacity: 1;
-    translate: 0 -50%;
+    translate: 0 0%;
     transition: all 0.3s ease;
   }
 
@@ -78,6 +78,10 @@ const PDFCardLight = styled.div`
 
   &:hover {
     background: white;
+  }
+
+  & .top__24 {
+    top: 24px !important;
   }
 `;
 
@@ -91,14 +95,14 @@ const PDFCardDark = styled.div`
 
   & .icon {
     opacity: 0;
-    translate: 40% -50%;
+    translate: 40% 0%;
     transition: all 0.3s ease;
   }
 
   &:hover .icon {
     color: #FFF;
     opacity: 1;
-    translate: 0 -50%;
+    translate: 0 0%;
     transition: all 0.3s ease;
     cursor: pointer;
   }
@@ -115,5 +119,9 @@ const PDFCardDark = styled.div`
   &:active {
     background: #353534;
     color: #FFF;
+  }
+
+  & .top__24 {
+    top: 24px !important;
   }
 `;

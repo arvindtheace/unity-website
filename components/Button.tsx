@@ -8,6 +8,7 @@ import {
   DialogContent,
   DialogPortal,
   DialogTrigger,
+  DialogClose
 } from "@/components/ui/dialog"
 import {
   Drawer,

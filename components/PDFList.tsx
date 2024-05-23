@@ -113,7 +113,7 @@ function PDFList({ name, searchAlign = "left", hasFilter }: Props) {
 
   return (
     <div ref={containerRef} className='py-10'>
-      <div className="flex items-center justify-between mb-12 gap-3">
+      <div className="flex items-center justify-between mb-12 gap-3 flex-col md:flex-row">
         <Input
           type="text"
           placeholder="Search"

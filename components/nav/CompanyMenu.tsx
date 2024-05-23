@@ -17,7 +17,7 @@ export const CompanyMenu = forwardRef<HTMLElement>((props, ref) => {
 
 
   return (
-    <div ref={ref as LegacyRef<HTMLDivElement>} className='p-8'>
+    <div ref={ref as LegacyRef<HTMLDivElement>} className='p-2'>
       <ul className="grid grid-cols-2 gap-6">
         {items.map((item: any) => (
           <StyledLink key={item.link}>

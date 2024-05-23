@@ -95,6 +95,8 @@ const Button = styled.div`
     background: #323232;
     border-radius: 16px;
     width: 364px;
+    max-width: 90vw;
+    margin: 0 auto;
     height:140px;
     cursor: pointer;
 `

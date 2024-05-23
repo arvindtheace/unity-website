@@ -124,7 +124,7 @@ export default function InvestorsDisclosures() {
         {
           page === 0 && (
             <>
-              <h3 className='mb-12'>Shareholders Information</h3>
+              <h3 className='mb-12 text-center md:text-left'>Shareholders Information</h3>
               {/* <PDFList
                 name="Shareholders - Annual Reports"
                 hasFilter={false}
@@ -141,7 +141,7 @@ export default function InvestorsDisclosures() {
         {
           page === 1 && (
             <>
-              <h3 className='mb-6'>Credit Rating</h3>
+              <h3 className='mb-6 text-center md:text-left'>Credit Rating</h3>
               <PDFList
                 name="Credit Rating"
                 hasFilter={false}
@@ -154,7 +154,7 @@ export default function InvestorsDisclosures() {
         {
           page === 2 && (
             <>
-              <h3 className='mb-6'>Valuation of Market Linked Debentures</h3>
+              <h3 className='mb-6 text-center md:text-left'>Valuation of Market Linked Debentures</h3>
               <PDFList
                 name="Valuation of Market Linked Debentures"
                 hasFilter={false}
@@ -167,7 +167,7 @@ export default function InvestorsDisclosures() {
         {
           page === 3 && (
             <>
-              <h3 className='mb-6'>Exchange Filings</h3>
+              <h3 className='mb-6 text-center md:text-left'>Exchange Filings</h3>
               <PDFList
                 name="Exchange Filings"
                 hasFilter={false}
@@ -180,7 +180,7 @@ export default function InvestorsDisclosures() {
         {
           page === 4 && (
             <>
-              <h3 className='mb-6'>Registrar and Share Transfer Agent</h3>
+              <h3 className='mb-6 text-center md:text-left'>Registrar and Share Transfer Agent</h3>
               <div className="transparent-card" dangerouslySetInnerHTML={{__html:data.content}} />
             </>
           )
@@ -190,7 +190,7 @@ export default function InvestorsDisclosures() {
         {
           page === 5 && (
             <>
-              <h3 className='mb-6'>Investor Grievances</h3>
+              <h3 className='mb-6 text-center md:text-left'>Investor Grievances</h3>
               <div className="transparent-card" dangerouslySetInnerHTML={{__html:data.content}} />
             </>
           )
@@ -200,7 +200,7 @@ export default function InvestorsDisclosures() {
         {
           page === 6 && (
             <>
-              <h3 className='mb-6'>Financials</h3>
+              <h3 className='mb-6 text-center md:text-left'>Financials</h3>
               <PDFList
                 name="Financials"
                 hasFilter={false}

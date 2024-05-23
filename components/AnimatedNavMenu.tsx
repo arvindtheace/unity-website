@@ -86,7 +86,7 @@ const AnimatedNavMenu: React.FC<{color: string}> = ({ color }) => {
             hovering !== null ? "transition-all" : "opacity-0 pointer-events-none",
           )}
           style={{ 
-            width: hovering === 0 && 900 || 650,
+            width: hovering === 0 && 1000 || 650,
             height: popoverHeight || 0,
             left: popoverLeft || 0,
             borderRadius: '24px'
@@ -157,5 +157,5 @@ const SlideInner = styled.div`
   box-shadow: 0px 24px 72px 0px #0000001F;
   border-radius: 24px;
   background-color: #fff;
-  padding: 18px;
+  padding: 18px 26px;
 `
