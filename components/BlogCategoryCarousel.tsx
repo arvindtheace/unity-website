@@ -37,8 +37,8 @@ export default function BlogCategoryCarousel({ category, count }: { category: 's
           {
             blogs?.length > 3 && (
               <div>
-                <CarouselPrevious className='bg-transparent border-0 p-0 mr-4' />
-                <CarouselNext className='bg-transparent border-0 p-0'/>
+                <CarouselPrevious className='hidden md:inline bg-transparent border-0 p-0 mr-4' />
+                <CarouselNext className='hidden md:inline bg-transparent border-0 p-0'/>
               </div>
             )
           }
