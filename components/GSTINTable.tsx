@@ -13,7 +13,7 @@ export default function GSTINTable() {
   }, []);
 
   return (
-    <div className="table-border overflow-hidden">
+    <div className="table-border overflow-x-auto">
       <table>
         <thead>
           <th>No.</th>
