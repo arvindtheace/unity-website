@@ -60,12 +60,6 @@ const FeaturedBlogCarousel: React.FC = ({ blogs }: any) => {
                   </div>
                 )
               }
-              <Button
-                text="View All"
-                href="/blog"
-                type="link"
-                icon="arrow-right"
-              />
             </div>
           </div>
           <CarouselContent className='items-stretch'>
