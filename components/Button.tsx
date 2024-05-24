@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, X } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
@@ -115,6 +115,9 @@ export default function Button({ text, type, action = "link", popup = "contact",
                   </DrawerTrigger>
                   <DrawerPortal>
                     <DrawerContent className='bg-white p-6 max-h-[96%]' style={{maxWidth:'860px'}}>
+                    <DialogClose className='absolute top-4 right-4'>
+                      <X/>
+                    </DialogClose>
                       <div className='overflow-auto'>
                         { popup === "contact" && <PopupForm withResume={withResume} /> }
                         { popup === "interestRates" && <InterestRatesPopup /> }

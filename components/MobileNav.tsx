@@ -1,4 +1,4 @@
-import { ArrowLeft, ChevronRight, Menu, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React from "react";
 import styled from "styled-components";
@@ -118,14 +118,23 @@ export default function MobileNav({
         {
           page === "personal" &&
           <div className="mt-16 p-8">
-            <h5 className="mb-10">
+            <div className="flex flex-col mb-16">
+              <h5 className="">
+                <a 
+                href="/"
+                
+                
+                className='py-2 flex items-center'
+                >Personal banking</a>
+              </h5>
               <a 
-              href="/"
-              
-              
-              className='py-2 px-4 flex items-center'
-              >Personal banking</a>
-            </h5>
+                href="/"
+                className='py-2 md:items-center flex'
+              >
+                <h5 className="text-base mr-2">Know more</h5>
+                <ArrowRight size={21}/>
+              </a>
+            </div>
             <div className="flex flex-col gap-8">
               {save.map((item: any) => (
                 <Link key={item.link} href={item.link} className="flex items-center space-x-6">
@@ -139,14 +148,22 @@ export default function MobileNav({
         {
           page === "business" &&
           <div className="mt-16 p-8">
-            <h5 className="mb-10">
+            <div className="flex flex-col mb-16">
+              <h5 className="">
+                <a 
+                  href="./business"
+                  className='py-2 md:items-center '
+                  >Business banking
+                </a>
+              </h5>
               <a 
                 href="./business"
-                
-                
-                className='py-2 px-4 flex items-center'
-                >Business banking</a>
-              </h5>
+                className='py-2 md:items-center flex'
+              >
+                <h5 className="text-base mr-2">Know more</h5>
+                <ArrowRight size={21}/>
+              </a>
+            </div>
             <div className="flex flex-col gap-8">
               {business.map((item:any) => (
                 <Link key={item.link} href={item.link} className="flex items-center space-x-6">
