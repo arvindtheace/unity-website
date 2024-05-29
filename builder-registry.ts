@@ -910,6 +910,13 @@ Builder.registerComponent(
 )
 
 Builder.registerComponent(
+  dynamic(() => import("./components/WhatsappHowToRegister")),
+  {
+    name: "WhatsappHowToRegister"
+  }
+)
+
+Builder.registerComponent(
   dynamic(() => import("./components/BlogPreview2")),
   {
     name: "BlogPreview2",
