@@ -281,6 +281,52 @@ Builder.registerComponent(
 );
 
 Builder.registerComponent(
+  dynamic(() => import("./components/WhatsappFAQs")),
+  {
+    name: "WhatsappFAQs",
+    friendlyName: "Questions? Answers",
+    inputs: [
+      {
+        name: "theme",
+        type: "string",
+        friendlyName: "Theme",
+        enum: [
+          {
+            label: "Light",
+            value: "light",
+          },
+          {
+            label: "Dark",
+            value: "dark",
+          },
+        ],
+        required: true,
+        defaultValue: "light",
+      },
+      {
+        name: "whatsappfaqs",
+        type: "list",
+        required: true,
+        subFields: [
+          {
+            name: "question",
+            type: "string",
+            required: true,
+            defaultValue: "Question",
+          },
+          {
+            name: "answer",
+            type: "html",
+            required: true,
+            defaultValue: "Answer",
+          },
+        ],
+      },
+    ],
+  }
+);
+
+Builder.registerComponent(
   dynamic(() => import("./components/BlogPreview")),
   {
     name: "BlogPreview",

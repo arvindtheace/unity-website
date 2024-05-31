@@ -15,16 +15,14 @@ const WhatsappHowToRegister = () => {
                 <strong>Add Unity Smart Banking to your Contacts</strong>
                 <br />
                 <br />
-                <font color="##000000CC">
+                <font color="#000000CC">
                 Click or copy our official Whatsapp number +91 7669300225<br /></font>
-                <br />
-                <br />
             </li>
             <li>
                 <strong>Send a “Hi” via your registered mobile no. on Whatsapp</strong>
                 <br />
                 <br />
-                <font color="##000000CC">
+                <font color="#000000CC">
                     We’ll start registration for Unity Smart Banking
                 </font>
             </li>
@@ -32,7 +30,7 @@ const WhatsappHowToRegister = () => {
                 <strong>Select if you’re Existing or a New Customer</strong>
                 <br />
                 <br />
-                <font color="##000000CC">
+                <font color="#000000CC">
                     Once you select your account type we’ll send you the OTP to verify
                 </font>
             </li>
