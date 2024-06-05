@@ -59,6 +59,7 @@ const DropdownCard: React.FC<any> = ({ title, content, headers, rows }) => {
   );
 };
 
+
 export default DropdownCard;
 
 const Dropdown = styled.div`
@@ -76,8 +77,8 @@ const Trigger = styled.div`
 `;
 
 const Content = styled.div<{isExpanded: boolean}>`
-  max-height: ${({ isExpanded }) => isExpanded ? '1200px' : '0'};
-  overflow: hidden;
+  max-height: ${({ isExpanded }) => isExpanded ? '1500px' : '0'};
+  overflow-x: auto;
   transition: ${({ isExpanded }) => isExpanded ? 'max-height 0.5s ease' : 'max-height 0.3s ease'};
 
   & ol {
