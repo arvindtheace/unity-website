@@ -105,8 +105,12 @@ export default function Footer() {
             <a href="https://www.linkedin.com/company/unity-small-finance-bank/" target="_blank" rel="noreferrer"><LinkedIn fill="#B5B5B5" /></a>
           </div>
           <div className="flex items-center space-x-6">
-            <AppStore />
-            <PlayStore />
+            <a href="https://apps.apple.com/in/app/unity-bank-fd-savings-account/id6450705139" target="_blank" rel="noreferrer">
+              <AppStore />
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=app.imps.unity&hl=en&gl=US" target="_blank" rel="noreferrer">
+              <PlayStore />
+            </a>
           </div>
         </div>
       </div>
