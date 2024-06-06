@@ -122,6 +122,10 @@ Builder.registerComponent(
             label: "Arrow Right",
             value: "arrow-right",
           },
+          {
+            label: "Download Icon",
+            value: "download-icon",
+          },
         ],
       },
     ],
