@@ -1,4 +1,4 @@
-import { ArrowRight, X } from 'lucide-react'
+import { ArrowRight, X, DownloadIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
@@ -26,7 +26,7 @@ type ButtonProps = {
   popup?: "interestRates" | "contact",
   withResume?: boolean,
   href: string,
-  icon?: "arrow-right",
+  icon?: "arrow-right" | "download-icon",
   width?: "full" | "fit",
   linkType?: "internal" | "external"
 }
@@ -51,6 +51,9 @@ export default function Button({ text, type, action = "link", popup = "contact",
                       {
                         icon === "arrow-right" && <ArrowRight size={16} />
                       }
+                      {
+                        icon === "download-icon" && <DownloadIcon size={16} />
+                      }
                     </span>
                   }
                 </ButtonContainer>
@@ -64,6 +67,9 @@ export default function Button({ text, type, action = "link", popup = "contact",
                     <span className='ml-2'>
                       {
                         icon === "arrow-right" && <ArrowRight size={16} />
+                      }
+                      {
+                        icon === "download-icon" && <DownloadIcon size={16} />
                       }
                     </span>
                   }
@@ -88,6 +94,9 @@ export default function Button({ text, type, action = "link", popup = "contact",
                         <span className='ml-2'>
                           {
                             icon === "arrow-right" && <ArrowRight size={16} />
+                          }
+                          {
+                            icon === "download-icon" && <DownloadIcon size={16} />
                           }
                         </span>
                       }
@@ -140,6 +149,9 @@ export default function Button({ text, type, action = "link", popup = "contact",
                 <span className='ml-2'>
                   {
                     icon === "arrow-right" && <ArrowRight size={16} />
+                  }
+                  {
+                    icon === "download-icon" && <DownloadIcon size={16} />
                   }
                 </span>
               }
