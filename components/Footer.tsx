@@ -81,6 +81,8 @@ export default function Footer() {
         <div>
           <div className="text-lg font-semibold mb-6">Useful Links</div>
           <div className='flex flex-col gap-3 mb-6'>
+            <Link href="/digital-banking">Mobile Banking</Link>
+            <Link href="/whatsapp-banking">Whatsapp Banking</Link>
             <Link href="/important-documents">Important Documents</Link>
             <Link href="/download-forms">Download Forms</Link>
             <Link href="/terms-and-conditions">Terms & Conditions</Link>
