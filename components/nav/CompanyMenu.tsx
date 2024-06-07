@@ -58,7 +58,7 @@ const StyledLink = styled.a`
 
   .hover_bg {
     border-radius: 50%;
-    transition: 0.2s ease;
+    transition: 0.3s ease;
   }
 
   &:hover .hover_bg {
