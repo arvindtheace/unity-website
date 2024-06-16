@@ -18,14 +18,14 @@ const navItems = [
     hasDropdown: true,
   },
   {
-    title: 'Company',
-    href: '/company',
-    hasDropdown: true,
-  },
-  {
     title: 'Inclusive',
     href: '/inclusive-banking',
     hasDropdown: false,
+  },
+  {
+    title: 'Company',
+    href: '/company',
+    hasDropdown: true,
   },
   {
     title: 'Contact Us',

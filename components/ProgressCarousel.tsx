@@ -49,7 +49,7 @@ export default function ProgressCarousel({ sections }: { sections: Sections }) {
             sections.map((section, i) => (
               <h5
                 key={`carousel-section-${i}`}
-                className='cursor-pointer p-6 sm:p-8'
+                className='cursor-pointer p-3 md:p-6 sm:p-8'
                 onClick={() => api?.scrollTo(section.startingSlideNumber)}
               >
                 {section.title}

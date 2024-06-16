@@ -825,6 +825,20 @@ Builder.registerComponent(
 );
 
 Builder.registerComponent(
+  dynamic(() => import("./components/BlogCategoryPageSection")),
+  {
+    name: "BlogCategorySection",
+    inputs: [
+      {
+        name: "primaryCategory",
+        type: "string",
+        required: true,
+      },
+    ],
+  }
+);
+
+Builder.registerComponent(
   dynamic(() => import("./components/FeaturedBlogCarousel")),
   {
     name: "FeaturedBlogCarousel",

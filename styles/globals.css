@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+button {
+  text-align: initial;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -118,6 +122,7 @@ h6 {
   border-radius: 16px;
   background: #FFF;
   box-shadow: 0px 4px 16px 0px rgba(168, 161, 125, 0.12), 0px 0px 4px 0px rgba(0, 0, 0, 0.10), 0px 0px 1px 0px rgba(0, 0, 0, 0.13);
+  transition: 0.2s ease-in-out;
 }
 
 .white-card:hover {
@@ -126,6 +131,19 @@ h6 {
 
 .white-card a {
   font-weight: 600;
+}
+
+a.link-hover-transition, .link-hover-transition a{
+  span {
+    transform: translateX(0);
+    transition: 0.25s ease-in-out;
+  }
+}
+
+a.link-hover-transition:hover, .link-hover-transition:hover a{
+  span {
+    transform: translateX(10px);
+  }
 }
 
 .dark-card {

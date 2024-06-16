@@ -24,13 +24,15 @@ const ColorChangingSectionComponent = ({ beforeColor, bgColor, text, children }:
         start: "top 40%",
         end: "bottom 50%",
         onEnter: () => {
-          gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
+          // gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
+          gsap.to(bgRef.current, { scale: 1.6, ease: "power2.inOut", duration: 0.75 })
           setTimeout(() => {
             document.body.style.backgroundColor = bgColor;
           }, 100)
         },
         onLeaveBack: () => {
-          gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
+          // gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
+          gsap.to(bgRef.current, {  scale: 1, ease: "power2.inOut", duration: 0.75 })
           setTimeout(() => {
             document.body.style.backgroundColor = beforeColor;
           }, 100)
@@ -46,7 +48,7 @@ const ColorChangingSectionComponent = ({ beforeColor, bgColor, text, children }:
   }, [bgRef.current]);
 
   return (
-    <div className="my-20">
+    <div className="my-0 md:my-20">
       <div className="relative" ref={containerRef}>
         <Background
           className="absolute inset-0 w-full h-full"

@@ -7,7 +7,7 @@ import { ChevronRight } from 'lucide-react'
 export default function Footer() {
   return (
     <FooterContainer className='p-8 md:p-16 mt-8 md:mt-16'>
-      <div className='grid grid-cols-2 md:grid-cols-6 mb-24'>
+      <div className='grid grid-cols-2 grid-gap-20 md:grid-cols-5 mb-24 mx-auto'>
         <div className='col-span-2 md:col-span-1 grid place-items-center md:block mb-8 md:mb-0'>
           <Logo style="dark" />
         </div>
@@ -20,7 +20,7 @@ export default function Footer() {
             <Link href="/personal/fixed-deposit">Fixed Deposit</Link>
             <Link href="/personal/recurring-deposit">Recurring Deposit</Link>
             <Link href="/personal/lockers">Lockers</Link>
-            <Link href="/personal/nri-banking">NRI Banking</Link>
+            <Link href="/personal/nri-banking">NRI Account</Link>
             <Link href="/personal/pearl-account">Pearl Account</Link>
             <Link href="/personal/seniors-account">Seniors Account</Link>
             <Link href="/personal/doorstep-banking">Doorstep Banking</Link>
