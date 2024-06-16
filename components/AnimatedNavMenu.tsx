@@ -98,8 +98,8 @@ const AnimatedNavMenu: React.FC<{color: string}> = ({ color }) => {
           <SlideWrapper index={1} hovering={hovering} setHovering={setHovering}>
             <BusinessMenu ref={element => refs.current[1] = element} />
           </SlideWrapper>
-          <SlideWrapper index={2} hovering={hovering} setHovering={setHovering}>
-            <CompanyMenu ref={element => refs.current[2] = element} />
+          <SlideWrapper index={3} hovering={hovering} setHovering={setHovering}>
+            <CompanyMenu ref={element => refs.current[3] = element} />
           </SlideWrapper>
         </div>
       </div>

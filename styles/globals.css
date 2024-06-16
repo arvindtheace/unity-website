@@ -360,3 +360,42 @@ ul[role="navigation"] li {
 .breadcrumb__links p a {
   color: #878787 !important;
 }
+
+.feedback-links {
+  position: relative;
+
+}
+
+.feedback-links:before {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(0px, -50%);
+  opacity: 0;
+  background: url('../public/images/arrow-right.png') no-repeat;
+  background-size: contain;
+  transition: 0.25s ease-in-out;
+}
+
+.feedback-links:hover {
+  background-color: #F5F4F1;
+}
+
+.feedback-links:hover:before {
+  transform: translate(0px, -50%);
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+
+  .feedback-links:before {
+    opacity: 1;
+  }
+
+  .feedback-links:hover {
+    background-color: #EFEBDE;
+  }
+}

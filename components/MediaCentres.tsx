@@ -71,6 +71,9 @@ export default function MediaCentres() {
           if (data) setPressKit(data)
         })
     }
+
+    console.log(data);
+    
   }, [page])
 
   return (
@@ -121,20 +124,34 @@ export default function MediaCentres() {
         {/* Press Release */}
         {
           page === 0 && (
-            <div className='grid md:grid-cols-2 gap-12'>
-              {
-                data?.items.map((_, i) => (
-                  <a key={`article-${i}`} href={_.link} target='_blank'>
-                    <div className='flex flex-col gap-4'>
-                      <img src={_.image} alt={_.title} className='w-full h-60 object-cover rounded-xl' />
-                      <div className='flex flex-col gap-2'>
-                        <div className='text-lg font-bold'>{_.title}</div>
-                        <div className='text-sm text-gray-500'>{format(_.date, "do MMMM, y")}</div>
+            <div>
+              <div className='grid md:grid-cols-2 gap-12'>
+                {
+                  data?.items.map((_, i) => (
+                    <a key={`article-${i}`} href={_.link} target='_blank'>
+                      <div className='flex flex-col gap-4'>
+                        <img src={_.image} alt={_.title} className='w-full h-60 object-cover rounded-xl' />
+                        <div className='flex flex-col gap-2'>
+                          <div className='text-lg font-bold'>{_.title}</div>
+                          <div className='text-sm text-gray-500'>{format(_.date, "do MMMM, y")}</div>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                ))
+                    </a>
+                  ))
+                }
+              </div>
+              <div>
+              {
+                data == null ? (
+                  <div className="flex items-center flex-col">
+                    <img className='w-16' src="https://cdn.builder.io/api/v1/image/assets%2F21b44296fc364461abc19d1d5fa5792d%2F864626fd164a4c0bb0a8445cf15b4d83" alt="" />
+                    <p>Sorry, currently we don’t have any Press Releases.</p>
+                  </div>
+                ):(
+                  <div className=""></div>
+                )
               }
+              </div>
             </div>
           )
         }
@@ -142,20 +159,34 @@ export default function MediaCentres() {
         {/* Latest News */}
         {
           page === 1 && (
-            <div className='grid md:grid-cols-2 gap-12'>
-              {
-                data?.items.map((_, i) => (
-                  <a key={`article-${i}`} href={_.link} target='_blank'>
-                    <div className='flex flex-col gap-4'>
-                      <img src={_.image} alt={_.title} className='w-full h-60 object-cover rounded-xl' />
-                      <div className='flex flex-col gap-2'>
-                        <div className='text-lg font-bold'>{_.title}</div>
-                        <div className='text-sm text-gray-500'>{format(_.date, "do MMMM, y")}</div>
+            <div>
+              <div className='grid md:grid-cols-2 gap-12'>
+                {
+                  data?.items.map((_, i) => (
+                    <a key={`article-${i}`} href={_.link} target='_blank'>
+                      <div className='flex flex-col gap-4'>
+                        <img src={_.image} alt={_.title} className='w-full h-60 object-cover rounded-xl' />
+                        <div className='flex flex-col gap-2'>
+                          <div className='text-lg font-bold'>{_.title}</div>
+                          <div className='text-sm text-gray-500'>{format(_.date, "do MMMM, y")}</div>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                ))
+                    </a>
+                  ))
+                }
+              </div>
+              <div>
+              {
+                data == null ? (
+                  <div className="flex items-center flex-col">
+                    <img className='w-16' src="https://cdn.builder.io/api/v1/image/assets%2F21b44296fc364461abc19d1d5fa5792d%2F864626fd164a4c0bb0a8445cf15b4d83" alt="" />
+                    <p>Sorry, currently we don’t have any Latest News.</p>
+                  </div>
+                ):(
+                  <div className=""></div>
+                )
               }
+              </div>
             </div>
           )
         }
