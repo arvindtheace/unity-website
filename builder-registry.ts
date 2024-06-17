@@ -985,33 +985,33 @@ Builder.registerComponent(
     name: "CardThreeRowImageFirst",
     friendlyName: "Card 3-Row ImageFirst",
     inputs: [
-      // {
-      //   name: "size",
-      //   type: "string",
-      //   friendlyName: "Size",
-      //   defaultValue: "small",
-      //   enum: [
-      //     {
-      //       label: "Small",
-      //       value: "small",
-      //     },
-      //     {
-      //       label: "Large",
-      //       value: "large",
-      //     },
-      //   ],
-      // },
-      // {
-      //   name: "info",
-      //   type: "list",
-      //   subFields: [
-      //     {
-      //       name: "article",
-      //       type: "reference",
-      //       model: "card-3-row-image-first",
-      //     },
-      //   ],
-      // },
+      {
+        name: "location",
+        type: "string",
+        friendlyName: "Location",
+        defaultValue: "Home-Small",
+        enum: [
+          {
+            label: "Home Small",
+            value: "Home-Small",
+          },
+          {
+            label: "Home Large",
+            value: "Home-Large",
+          },
+        ],
+      },
+      {
+        name: "info",
+        type: "list",
+        subFields: [
+          {
+            name: "article",
+            type: "reference",
+            model: "card-3-row-image-first",
+          },
+        ],
+      },
     ],
   }
 );

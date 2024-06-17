@@ -1,97 +1,64 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import { formatDistanceToNow } from 'date-fns';
+import React, { useState } from 'react';
 import useWindowWidth from '@/hooks/useWindowWidth';
-import { withChildren } from "@builder.io/react";
+import Button from './Button';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { builder } from '@builder.io/react';
+import styled from 'styled-components';
 
-type Props = {
-  beforeColor: string;
-  bgColor: string;
-  text: string;
-  children: any;
-}
+builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-const Card3RowImageFirstComponent = ({ beforeColor, bgColor, text, children }: Props) => {
-  const containerRef = React.useRef(null);
-  const bgRef = React.useRef(null);
+export default function CardThreeRowImageFirst({ blogs }: any) {
+// const CardThreeRowImageFirst: React.FC = ({ blogs }: any) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [blogsContent, setBlogsContent] = React.useState<any>([])
   const width = useWindowWidth()
 
-  useEffect(() => {
-    console.log('hey');
+  React.useEffect(() => {
     
-  }, [bgRef.current]);
+    blogs.forEach((element:any) => {
+      console.log(element);
+      
+      setBlogsContent((blogsContent:any) => [...blogsContent,element.article.value])
+    });
+
+  }, []);
+  
+
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const handleNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % blogs.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentSlide((prev) => (prev - 1 + blogs.length) % blogs.length);
+  };
 
   return (
     <div>
-        {
-            width < 768 ? (
-                <Carousel
-                    opts={{
-                        align: "start",
-                        dragFree: true,
-                    }}
-                    className="w-full pb-20"
-                    >
-                    <CarouselContent className='items-stretch'>
-                        {children}
-                    </CarouselContent>
-                </Carousel>
-            ):(
-                <div>
-                    <div
-                        className={`grid grid-cols-1 md:grid-cols-3 items-center gap-12`}
-                    >
-                        
-                        {children}
-                        
-                    </div>
-                </div>
-            )
-        }
+    
+        <h1>.</h1>
+
+
     </div>
-    // <div className="my-0 md:my-20">
-    //   <div className="relative" ref={containerRef}>
-    //     <Background
-    //       className="absolute inset-0 w-full h-full"
-    //       style={{backgroundColor: bgColor}}
-    //       ref={bgRef}
-    //     />
-    //     {
-    //       text &&
-    //       <div className="h-96 grid place-items-center">
-    //         <Text
-    //           className="absolute inset-0 w-80"
-    //           dangerouslySetInnerHTML={{ __html: text }}
-    //         />
-    //       </div>
-    //     }
-    //     {children}
-    //   </div>
-    // </div>
   );
-}
+};
 
-const CardThreeRowImageFirst = withChildren(Card3RowImageFirstComponent);
-export default CardThreeRowImageFirst
-
-const Background = styled.div`
-  z-index: -1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 100%;
-  border-radius: 32px;
-  height: 100%;
-  scale: 1;
-`
-
-const Text = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-  width: 94%;
-  height: fit-content;
+const Badge = styled.div`
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: rgba(30, 30, 30, 0.50);
+  color: #fff;
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.12px;
+  text-transform: uppercase;
 `
