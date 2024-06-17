@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
-export default function CardThreeRowImageFirst({ blogs }: any) {
+export default function CardThreeRowImageFirst({ info }: any) {
 // const CardThreeRowImageFirst: React.FC = ({ blogs }: any) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [blogsContent, setBlogsContent] = React.useState<any>([])
@@ -17,7 +17,7 @@ export default function CardThreeRowImageFirst({ blogs }: any) {
 
   React.useEffect(() => {
     
-    blogs.forEach((element:any) => {
+    info.forEach((element:any) => {
       console.log(element);
       
       setBlogsContent((blogsContent:any) => [...blogsContent,element.article.value])
@@ -31,11 +31,11 @@ export default function CardThreeRowImageFirst({ blogs }: any) {
   };
 
   const handleNext = () => {
-    setCurrentSlide((prev) => (prev + 1) % blogs.length);
+    setCurrentSlide((prev) => (prev + 1) % info.length);
   };
 
   const handlePrev = () => {
-    setCurrentSlide((prev) => (prev - 1 + blogs.length) % blogs.length);
+    setCurrentSlide((prev) => (prev - 1 + info.length) % info.length);
   };
 
   return (
