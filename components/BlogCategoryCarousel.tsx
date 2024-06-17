@@ -110,7 +110,7 @@ export default function BlogCategoryCarousel({ category, count }: { category: 's
           <div className="flex justify-center">
             <Button
               text="View All"
-              href={`/category/stories`}
+              href={`/category/Stories`}
               type="secondary"
               icon="arrow-right"
             />

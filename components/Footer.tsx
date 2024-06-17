@@ -20,7 +20,7 @@ export default function Footer() {
             <Link href="/personal/fixed-deposit">Fixed Deposit</Link>
             <Link href="/personal/recurring-deposit">Recurring Deposit</Link>
             <Link href="/personal/lockers">Lockers</Link>
-            <Link href="/personal/nri-banking">NRI Account</Link>
+            <Link href="/personal/nri-account">NRI Account</Link>
             <Link href="/personal/pearl-account">Pearl Account</Link>
             <Link href="/personal/seniors-account">Seniors Account</Link>
             <Link href="/personal/doorstep-banking">Doorstep Banking</Link>

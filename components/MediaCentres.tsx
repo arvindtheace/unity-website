@@ -71,8 +71,6 @@ export default function MediaCentres() {
           if (data) setPressKit(data)
         })
     }
-
-    console.log(data);
     
   }, [page])
 
@@ -144,8 +142,8 @@ export default function MediaCentres() {
               {
                 data == null ? (
                   <div className="flex items-center flex-col">
-                    <img className='w-16' src="https://cdn.builder.io/api/v1/image/assets%2F21b44296fc364461abc19d1d5fa5792d%2F864626fd164a4c0bb0a8445cf15b4d83" alt="" />
-                    <p>Sorry, currently we don’t have any Press Releases.</p>
+                    <img className='w-16' src="./images/no-content_found-media_center.svg" alt="" />
+                    <p className='text-[#0000009E]'>Sorry, currently we don’t have any Press Releases.</p>
                   </div>
                 ):(
                   <div className=""></div>
@@ -179,8 +177,8 @@ export default function MediaCentres() {
               {
                 data == null ? (
                   <div className="flex items-center flex-col">
-                    <img className='w-16' src="https://cdn.builder.io/api/v1/image/assets%2F21b44296fc364461abc19d1d5fa5792d%2F864626fd164a4c0bb0a8445cf15b4d83" alt="" />
-                    <p>Sorry, currently we don’t have any Latest News.</p>
+                    <img className='w-16' src="./images/no-content_found-media_center.svg" alt="" />
+                    <p className='text-[#0000009E]'>Sorry, currently we don’t have any Latest News.</p>
                   </div>
                 ):(
                   <div className=""></div>

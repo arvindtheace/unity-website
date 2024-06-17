@@ -21,21 +21,24 @@ const ColorChangingSectionComponent = ({ beforeColor, bgColor, text, children }:
     gsap.to(bgRef.current, {
       scrollTrigger: {
         trigger: bgRef.current,
-        start: "top 40%",
+        start: "top 45%",
         end: "bottom 50%",
         onEnter: () => {
+          console.log('enter',bgRef.current);
+          
           // gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
-          gsap.to(bgRef.current, { scale: 1.6, ease: "power2.inOut", duration: 0.75 })
+          gsap.to(bgRef.current, { scale: 1.6, ease: "power2.inOut", duration: 0.4 })
+          document.body.style.backgroundColor = bgColor;
           setTimeout(() => {
-            document.body.style.backgroundColor = bgColor;
-          }, 100)
+          }, 0)
         },
         onLeaveBack: () => {
+          console.log('leave');
           // gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
-          gsap.to(bgRef.current, {  scale: 1, ease: "power2.inOut", duration: 0.75 })
+          gsap.to(bgRef.current, {  scale: 1, ease: "power2.inOut", duration: 0.4 })
+          document.body.style.backgroundColor = beforeColor;
           setTimeout(() => {
-            document.body.style.backgroundColor = beforeColor;
-          }, 100)
+          }, 0)
         }
       },
     });
@@ -82,6 +85,7 @@ const Background = styled.div`
   width: 100%;
   border-radius: 32px;
   height: 100%;
+  scale: 1;
 `
 
 const Text = styled.div`
