@@ -18,7 +18,8 @@ const Card3RowImageFirstComponent = ({ beforeColor, bgColor, text, children }: P
   const width = useWindowWidth()
 
   useEffect(() => {
-
+    console.log('hey');
+    
   }, [bgRef.current]);
 
   return (
@@ -32,38 +33,18 @@ const Card3RowImageFirstComponent = ({ beforeColor, bgColor, text, children }: P
                     }}
                     className="w-full pb-20"
                     >
-                    
-                    <div className="flex justify-between items-center mb-10">
-                        <div className="flex items-center space-x-4">
-                        {
-                            children?.length > 3 && (
-                            <div>
-                                <CarouselPrevious className='hidden md:inline bg-transparent border-0 p-0 mr-4' />
-                                <CarouselNext className='hidden md:inline bg-transparent border-0 p-0'/>
-                            </div>
-                            )
-                        }
-                        </div>
-                    </div>
                     <CarouselContent className='items-stretch'>
-                        {children.length > 0 && children.map((_: any, index: number) => (
-                        <CarouselItem key={index} className="basis-4/5 md:basis-1/3">
-                            {_.children}
-                        </CarouselItem>
-                        ))}
+                        {children}
                     </CarouselContent>
                 </Carousel>
             ):(
                 <div>
                     <div
-                        className={`grid grid-cols-1 md:grid-cols-2 items-center gap-12`}
+                        className={`grid grid-cols-1 md:grid-cols-3 items-center gap-12`}
                     >
-                        {children.length > 0 && children.map((_: any, index: number) => (
-                            <div>
-                                {_.children}
-                            </div>
-                        ))}
-
+                        
+                        {children}
+                        
                     </div>
                 </div>
             )
