@@ -24,8 +24,6 @@ const ColorChangingSectionComponent = ({ beforeColor, bgColor, text, children }:
         start: "top 45%",
         end: "bottom 50%",
         onEnter: () => {
-          console.log('enter',bgRef.current);
-          
           // gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
           gsap.to(bgRef.current, { scale: 1.6, ease: "power2.inOut", duration: 0.4 })
           document.body.style.backgroundColor = bgColor;
@@ -33,7 +31,6 @@ const ColorChangingSectionComponent = ({ beforeColor, bgColor, text, children }:
           }, 0)
         },
         onLeaveBack: () => {
-          console.log('leave');
           // gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })
           gsap.to(bgRef.current, {  scale: 1, ease: "power2.inOut", duration: 0.4 })
           document.body.style.backgroundColor = beforeColor;
