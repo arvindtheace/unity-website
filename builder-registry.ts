@@ -1027,21 +1027,7 @@ Builder.registerComponent(
         "@type": "@builder.io/sdk:Element",
         component: {
           name: "HeaderCell",
-          options: { text: "Header Cell" },
-        },
-      },
-      {
-        "@type": "@builder.io/sdk:Element",
-        component: {
-          name: "ImageCell",
-          options: { text: "Image Cell" },
-        },
-      },
-      {
-        "@type": "@builder.io/sdk:Element",
-        component: {
-          name: "InfoCell",
-          options: { text: "Info Cell" },
+          options: { any: "Header Cell" },
         },
       },
     ],

@@ -88,7 +88,7 @@ export default function CardThreeRowImageFirst({ info }: any) {
                   </div>
                   <div>
                     <h5 className='mb-8 text-center'>{_.data.header}</h5>
-                    <div className='text-md mb-6 text-center'>{_.data.description}</div>
+                    <div className='text-[18px] mb-6 text-center'>{_.data.description}</div>
                     <div className="mx-auto w-fit">
                         <Button
                             text={`${_.data.buttonText}`}
@@ -105,7 +105,7 @@ export default function CardThreeRowImageFirst({ info }: any) {
           </CarouselContent>
         </Carousel>
       ):(
-        <div className='grid grid-cols-3 gap-24'>
+        <div className='grid grid-cols-3 gap-[120px]' style={{gridAutoRows: "1fr"}}>
             {blogsContent.length > 0 && blogsContent.map((_: any, index: number) => (
                 <div>
                     <div className='w-64 mb-8'>
@@ -113,7 +113,7 @@ export default function CardThreeRowImageFirst({ info }: any) {
                     </div>
                     <div>
                         <h5 className='mb-8'>{_.data.header}</h5>
-                        <div className='text-md mb-6'>{_.data.description}</div>
+                        <div className='text-[18px] mb-6'>{_.data.description}</div>
                         <Button
                             text={`${_.data.buttonText}`}
                             action={_.data.buttonAction}
