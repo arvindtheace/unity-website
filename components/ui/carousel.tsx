@@ -3,7 +3,7 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-
+import { DotButton, useDotButton } from './EmblaCarouselDotButton'
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
@@ -118,6 +118,9 @@ const Carousel = React.forwardRef<
       }
     }, [api, onSelect])
 
+    const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(api)
+    
     return (
       <CarouselContext.Provider
         value={{
@@ -141,6 +144,18 @@ const Carousel = React.forwardRef<
           {...props}
         >
           {children}
+
+          <div className="embla__dots">
+            {scrollSnaps.map((_, index) => (
+              <DotButton
+                key={index}
+                onClick={() => onDotButtonClick(index)}
+                className={'embla__dot'.concat(
+                  index === selectedIndex ? ' embla__dot--selected' : ''
+                )}
+              />
+            ))}
+          </div>
         </div>
       </CarouselContext.Provider>
     )
@@ -249,6 +264,30 @@ const CarouselNext = React.forwardRef<
   )
 })
 CarouselNext.displayName = "CarouselNext"
+
+// const CarouselDots = React.forwardRef<
+//   HTMLButtonElement,
+//   React.ComponentProps<typeof Button>
+// >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+//   const { orientation, scrollNext, canScrollNext } = useCarousel()
+  
+//   const { selectedIndex, scrollSnaps, onDotButtonClick } =
+//   useDotButton(api)
+//   return (
+//     <div className="embla__dots">
+//       {scrollSnaps.map((_, index) => (
+//         <DotButton
+//           key={index}
+//           onClick={() => onDotButtonClick(index)}
+//           className={'embla__dot'.concat(
+//             index === selectedIndex ? ' embla__dot--selected' : ''
+//           )}
+//         />
+//       ))}
+//     </div>
+//   )
+// })
+// CarouselDots.displayName = "CarouselDots"
 
 export {
   type CarouselApi,

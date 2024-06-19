@@ -171,15 +171,25 @@ const ButtonContainer = styled.button<{ type: string }>`
     props.type === 'tertiary' && '#F3F3F3' ||
     props.type === 'link' && 'transparent' 
   )};
+  
   border: ${props => (
     props.type === 'secondary' && '1px solid rgba(0, 0, 0, 0.16)'
   )};
   border-radius: 99px;
   font-weight: 600;
   transition: all 0.3s ease;
-
+  
+  span {
+    transform: translate(0);
+    transition: 0.25s ease;
+  }
+    
   &:hover {
     filter: brightness(96%);
+  }
+
+  &:hover span {
+    transform: ${props => props.type === "link" ? "translate(10px)" : "translate(0)"};
   }
 
   &:active {

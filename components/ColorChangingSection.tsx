@@ -21,7 +21,7 @@ const ColorChangingSectionComponent = ({ beforeColor, bgColor, text, children }:
     gsap.to(bgRef.current, {
       scrollTrigger: {
         trigger: bgRef.current,
-        start: "top 45%",
+        start: "top 35%",
         end: "bottom 50%",
         onEnter: () => {
           // gsap.to(bgRef.current, { width: '100%', height: '100%', ease: "power2.inOut", duration: 0.5 })

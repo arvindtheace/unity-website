@@ -84,7 +84,7 @@ export default function BlogPreview2({ size = "small", blogs }: any) {
   return (
     <div className='my-20 max-w-full'>
       <h2 className='mb-16'
-      // style={{color: (pathname?.startsWith('/business') || pathname?.startsWith('/')) ? '#FFF' : '#000'}}
+      // style={{color: (pathname?.startsWith('/business')) ? '#FFF' : '#000'}}
       style={{color: '#000'}}
       >Our blogs and stories</h2>
       <Carousel

@@ -1015,3 +1015,64 @@ Builder.registerComponent(
     ],
   }
 );
+
+
+Builder.registerComponent(
+  dynamic(() => import("./components/GridThreeCellLayout")),
+  {
+    name: "GridThreeCellLayout",
+    friendlyName: "3 Cell Grid Layout",
+    defaultChildren: [
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "HeaderCell",
+          options: { text: "Header Cell" },
+        },
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "ImageCell",
+          options: { text: "Image Cell" },
+        },
+      },
+      {
+        "@type": "@builder.io/sdk:Element",
+        component: {
+          name: "InfoCell",
+          options: { text: "Info Cell" },
+        },
+      },
+    ],
+    inputs: [
+      {
+        name: "location",
+        type: "string",
+        friendlyName: "Location",
+        defaultValue: "Home-Small",
+        enum: [
+          {
+            label: "Home Small",
+            value: "Home-Small",
+          },
+          {
+            label: "Home Large",
+            value: "Home-Large",
+          },
+        ],
+      },
+      {
+        name: "info",
+        type: "list",
+        subFields: [
+          {
+            name: "article",
+            type: "reference",
+            model: "card-3-row-image-first",
+          },
+        ],
+      },
+    ],
+  }
+);

@@ -22,14 +22,14 @@ type ButtonProps = {
     linkType?: "internal" | "external"
 }
 
-export default function CardThreeRowImageFirst({ info }: any) {
-// const CardThreeRowImageFirst: React.FC = ({ blogs }: any) => {
+export default function GridThreeCellLayout({ info, children }: any) {
+// const GridThreeCellLayout: React.FC = ({ blogs }: any) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [blogsContent, setBlogsContent] = React.useState<any>([])
   const width = useWindowWidth()
 
   React.useEffect(() => {
-    console.log(info.length);
+    console.log(children);
     setBlogsContent([])
     info.forEach((element:any) => {
       console.log(element);

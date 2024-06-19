@@ -18,7 +18,7 @@ const WhatsNew: React.FC<any> = ({ color }: { color: string }) => {
 
   return (
     <Sheet>
-      <SheetTrigger><Gift style={{color: color === "light" ? "#000" : "#FFF"}} /></SheetTrigger>
+      <SheetTrigger id="gift_icon"><Gift style={{color: color === "light" ? "#000" : "#FFF"}} /></SheetTrigger>
       <SheetContent className="w-[400px] sm:w-[540px]">
         <SheetHeader>
           <SheetTitle className='flex'>
