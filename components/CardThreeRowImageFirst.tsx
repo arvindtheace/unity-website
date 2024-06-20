@@ -17,10 +17,8 @@ export default function CardThreeRowImageFirst({ info }: Props) {
   const width = useWindowWidth()
 
   React.useEffect(() => {
-    console.log(info.length);
     setBlogsContent([])
     info.forEach((element:any) => {
-      console.log(element);
       
       setBlogsContent((blogsContent:any) => [...blogsContent,element.article.value])
     });
