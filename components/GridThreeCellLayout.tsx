@@ -11,6 +11,7 @@ import { withChildren } from "@builder.io/react";
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 
 type Props = {
+    direction: any,
     children: any
 }
 const GridThreeCellLayoutComponent = ({ direction, children }: Props) => {
