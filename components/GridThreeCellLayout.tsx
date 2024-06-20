@@ -31,42 +31,16 @@ const GridThreeCellLayoutComponent = ({ children }: Props) => {
 
         <div className='grid grid-cols-3 gap-24'>
             <div>
-                <div className='w-64 mb-8'>
-                    <img src={`${_.data.image}`} alt="" />
-                </div>
                 <div>
-                    <h5 className='mb-8'>{_.data.header}</h5>
-                    <div className='text-md mb-6'>{_.data.description}</div>
                     {children[0]}
-                    <Button
-                        text={`${_.data.buttonText}`}
-                        action={_.data.buttonAction}
-                        type={_.data.buttonType}
-                        href={_.data.href}
-                        icon="arrow-right"
-                        linkType={_.data.linkType}
-                    />
                 </div>
             </div>
         </div>
       ):(
         <div className='grid grid-cols-3 gap-24'>
             <div>
-                <div className='w-64 mb-8'>
-                    <img src={`${_.data.image}`} alt="" />
-                </div>
                 <div>
-                    <h5 className='mb-8'>{_.data.header}</h5>
-                    <div className='text-md mb-6'>{_.data.description}</div>
                     {children[0]}
-                    <Button
-                        text={`${_.data.buttonText}`}
-                        action={_.data.buttonAction}
-                        type={_.data.buttonType}
-                        href={_.data.href}
-                        icon="arrow-right"
-                        linkType={_.data.linkType}
-                    />
                 </div>
             </div>
         </div>
