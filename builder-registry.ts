@@ -1031,5 +1031,23 @@ Builder.registerComponent(
         },
       },
     ],
+    inputs: [
+      {
+        name: "direction",
+        type: "string",
+        friendlyName: "Column Direction",
+        defaultValue: "forward",
+        enum: [
+          {
+            label: "Forward",
+            value: "forward",
+          },
+          {
+            label: "Reverse",
+            value: "reverse",
+          },
+        ],
+      }
+    ],
   }
 );

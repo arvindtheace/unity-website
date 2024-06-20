@@ -13,9 +13,10 @@ builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
 type Props = {
     children: any
 }
-const GridThreeCellLayoutComponent = ({ children }: Props) => {
+const GridThreeCellLayoutComponent = ({ direction, children }: Props) => {
 // const GridThreeCellLayoutComponent({ info, children }: Props) {
 // const GridThreeCellLayout: React.FC = ({ blogs }: any) => {
+    // const [currentSlide, setCurrentSlide] = useState(0);
   const width = useWindowWidth()
 
   React.useEffect(() => {
@@ -26,26 +27,20 @@ const GridThreeCellLayoutComponent = ({ children }: Props) => {
   return (
     <div>
     
-    {
-      width < 768 ? (
-
-        <div className='grid grid-cols-3 gap-24'>
-            <div>
-                <div>
-                    {children[0]}
-                </div>
+        <div className='grid gird-cols-1 md:grid-cols-4 md:grid-flow-col gap-x-16'>
+            <div className={`col-span-2 mt-16 order-1 md:${direction === "reverse" ? 'order-2' : 'order-1'}`}>
+                {/* header */}
+                {children[0]} 
+            </div>
+            <div className={`col-span-2 order-3 md:${direction === "reverse" ? 'order-3' : 'order-2'}`}>
+                {/* description */}
+                {children[1]}
+            </div>
+            <div className={`row-span-3 col-span-2 order-2 md:${direction === "reverse" ? 'order-1' : 'order-3'}`}>
+                {/* image */}
+                {children[2]}
             </div>
         </div>
-      ):(
-        <div className='grid grid-cols-3 gap-24'>
-            <div>
-                <div>
-                    {children[0]}
-                </div>
-            </div>
-        </div>
-      )
-    }
 
 
     </div>
