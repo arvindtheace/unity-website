@@ -13,18 +13,20 @@ type Props = {
 
 export default function CardThreeRowImageFirst({ info }: Props) {
 // const CardThreeRowImageFirst: React.FC = ({ blogs }: any) => {
-  const [blogsContent, setBlogsContent] = React.useState<any>([])
+  const [articleInfo, setBlogsContent] = React.useState<any>([])
   const width = useWindowWidth()
 
   React.useEffect(() => {
     setBlogsContent([])
     info.forEach((element:any) => {
       
-      setBlogsContent((blogsContent:any) => [...blogsContent,element.article.value])
+      setBlogsContent((articleInfo:any) => [...articleInfo,element.article.value])
     });
 
   }, []);
-
+  if (!info) {
+    return <div></div>
+  }
   return (
     <div>
     
@@ -44,7 +46,7 @@ export default function CardThreeRowImageFirst({ info }: Props) {
           <div className="flex justify-between items-center mb-10">
             <div className="flex items-center space-x-4">
               {
-                blogsContent?.length > 3 && (
+                articleInfo?.length > 3 && (
                   <div>
                     <CarouselPrevious className='hidden md:inline bg-transparent border-0 p-0 mr-4' />
                     <CarouselNext className='hidden md:inline bg-transparent border-0 p-0'/>
@@ -54,7 +56,7 @@ export default function CardThreeRowImageFirst({ info }: Props) {
             </div>
           </div>
           <CarouselContent className='items-stretch'>
-            {blogsContent.length > 0 && blogsContent.map((_: any, index: number) => (
+            {articleInfo.length > 0 && articleInfo.map((_: any, index: number) => (
               <CarouselItem key={index} className="px-6">
                   <div className='w-64 mb-8'>
                     <img src={`${_.data.image}`} alt="" className='mx-auto'/>
@@ -79,7 +81,7 @@ export default function CardThreeRowImageFirst({ info }: Props) {
         </Carousel>
       ):(
         <div className='grid grid-cols-3 md:gap-[120px]' style={{gridAutoRows: "1fr"}}>
-            {blogsContent.length > 0 && blogsContent.map((_: any, index: number) => (
+            {articleInfo.length > 0 && articleInfo.map((_: any, index: number) => (
                 <div>
                     <div className='w-64 mb-8'>
                         <img src={`${_.data.image}`} alt="" />
