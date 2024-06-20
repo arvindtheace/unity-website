@@ -105,23 +105,25 @@ export default function CardThreeRowImageFirst({ info }: any) {
           </CarouselContent>
         </Carousel>
       ):(
-        <div className='grid grid-cols-3 gap-[120px]' style={{gridAutoRows: "1fr"}}>
+        <div className='grid grid-cols-3 md:gap-[120px]' style={{gridAutoRows: "1fr"}}>
             {blogsContent.length > 0 && blogsContent.map((_: any, index: number) => (
                 <div>
                     <div className='w-64 mb-8'>
                         <img src={`${_.data.image}`} alt="" />
                     </div>
-                    <div>
+                    <div className='flex flex-col' style={{minHeight: "228px"}}>
                         <h5 className='mb-8'>{_.data.header}</h5>
                         <div className='text-[18px] mb-6'>{_.data.description}</div>
-                        <Button
-                            text={`${_.data.buttonText}`}
-                            action={_.data.buttonAction}
-                            type={_.data.buttonType}
-                            href={_.data.href}
-                            icon="arrow-right"
-                            linkType={_.data.linkType}
-                        />
+                        <div className="mt-auto">
+                            <Button
+                                text={`${_.data.buttonText}`}
+                                action={_.data.buttonAction}
+                                type={_.data.buttonType}
+                                href={_.data.href}
+                                icon="arrow-right"
+                                linkType={_.data.linkType}
+                            />
+                        </div>
                     </div>
                 </div>
             ))}
