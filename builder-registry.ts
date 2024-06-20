@@ -986,22 +986,6 @@ Builder.registerComponent(
     friendlyName: "Card 3-Row ImageFirst",
     inputs: [
       {
-        name: "location",
-        type: "string",
-        friendlyName: "Location",
-        defaultValue: "Home-Small",
-        enum: [
-          {
-            label: "Home Small",
-            value: "Home-Small",
-          },
-          {
-            label: "Home Large",
-            value: "Home-Large",
-          },
-        ],
-      },
-      {
         name: "info",
         type: "list",
         subFields: [

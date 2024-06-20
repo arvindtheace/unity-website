@@ -26,18 +26,18 @@ const GridThreeCellLayoutComponent = ({ direction, children }: Props) => {
   }, []);
 
   return (
-    <div>
+    <div className='mb-24 md:mb-40'>
     
-        <div className='grid gird-cols-1 md:grid-cols-4 md:grid-rows-3 md:grid-flow-col gap-x-16'>
-            <div className={`col-span-2 row-span-1 mt-16 order-1 md:${direction === "reverse" ? 'order-2' : 'order-1'}`}>
+        <div className='grid gird-cols-1 md:grid-cols-4 md:grid-rows-auto md:grid-flow-col gap-x-16'>
+            <div className={`col-span-2 row-span-1 md:mt-16 order-1 md:${direction === "reverse" ? 'order-2' : 'order-1'}`}>
                 {/* header */}
                 {children[0]} 
             </div>
-            <div className={`col-span-2 row-span-2 order-3 ${direction === "reverse" ? 'md:order-3' : 'md:order-2'}`}>
+            <div className={`col-span-2 row-span-3 order-3 ${direction === "reverse" ? 'md:order-3' : 'md:order-2'}`}>
                 {/* description */}
                 {children[1]}
             </div>
-            <div className={`col-span-2 row-span-3 order-2 ${direction === "reverse" ? 'md:order-1' : 'md:order-3'}`}>
+            <div className={`col-span-2 row-span-4 order-2 ${direction === "reverse" ? 'md:order-1' : 'md:order-3'}`}>
                 {/* image */}
                 {children[2]}
             </div>
