@@ -13,6 +13,7 @@
     "@builder.io/react": "^3.1.1",
     "@builder.io/sdk": "^2.1.1",
     "@builder.io/widgets": "^1.2.24",
+    "@formspark/use-formspark": "^0.1.39",
     "@headlessui/react": "^1.7.18",
     "@radix-ui/colors": "^3.0.0",
     "@radix-ui/react-accordion": "^1.1.2",

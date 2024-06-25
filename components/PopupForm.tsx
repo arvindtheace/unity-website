@@ -8,6 +8,11 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@
 import { usePathname } from 'next/navigation';
 import { cities } from '@/utils/cities';
 import { states } from '@/utils/states';
+import { useFormspark } from "@formspark/use-formspark";
+
+const FORMSPARK_FORM_ID_CONTACT = "INrMWErhT";
+const FORMSPARK_FORM_ID_CAREERS = "J0UxzSlOO";
+
 
 const topicValues = [
   {
@@ -77,25 +82,36 @@ const topicValues = [
 ]
 
 const PopupForm: React.FC<any> = ({ withResume }: { withResume: boolean }) => {
+  const [pincodeError, setPincodeError] = useState(false);
+  const [resultMessage, setResultMessage] = useState('');
+  const [topicData, setTopicData] = useState('');
+  const [cityData, setCityData] = useState('');
+  const [stateData, setStateData] = useState('');
+  const [formID, setFormID] = useState(FORMSPARK_FORM_ID_CONTACT);
+  const pathname = usePathname()
+
+  const [submitContact, submittingContact] = useFormspark({
+    formId: formID,
+  });
+
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    city: '',
+    state: '',
     pincode: '',
+    topic: '',
     message: '',
     termsAgreed: true
   });
-  const [pincodeError, setPincodeError] = useState(false);
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [topic, setTopic] = useState('');
-  const pathname = usePathname()
 
   // in useEffect, setTopic to the title if current pathname matches the path
   useEffect(() => {
     const currentTopic = topicValues.find((topic) => topic.path === pathname);
     if (currentTopic) {
-      setTopic(currentTopic.title);
+      setTopicData(currentTopic.title);
     }
   }, [pathname]);
 
@@ -105,6 +121,39 @@ const PopupForm: React.FC<any> = ({ withResume }: { withResume: boolean }) => {
     setFormData(prevData => ({
       ...prevData,
       [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleChangeTopic = (value:any) => {
+    if(value === "Careers"){
+      setTopicData(value)
+      setFormID(FORMSPARK_FORM_ID_CAREERS)
+    }else {
+      setTopicData(value)
+      setFormID(FORMSPARK_FORM_ID_CONTACT)
+    }
+    
+    setFormData(prevData => ({
+      ...prevData,
+      topic: value
+    }));
+  };
+
+  const handleChangeCity = (value:any) => {
+    setCityData(value)
+    
+    setFormData(prevData => ({
+      ...prevData,
+      city: value
+    }));
+  };
+
+  const handleChangeState = (value:any) => {
+    
+    setStateData(value)
+    setFormData(prevData => ({
+      ...prevData,
+      state: value
     }));
   };
 
@@ -118,13 +167,16 @@ const PopupForm: React.FC<any> = ({ withResume }: { withResume: boolean }) => {
     }
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    // Handle form submission logic here
+    await submitContact({ formData });
+    
+    setResultMessage('Form Submitted Successfully!')
   };
 
   return (
     <form className='flex flex-col gap-6' onSubmit={handleSubmit}>
+    {/* // <form className='flex flex-col gap-6' action={'https://submit-form.com/INrMWErhT'}> */}
       <h5>Reach out to us</h5>
       <div className="grid md:grid-cols-2 gap-10">
         <div>
@@ -150,7 +202,7 @@ const PopupForm: React.FC<any> = ({ withResume }: { withResume: boolean }) => {
       <div className="grid md:grid-cols-2 gap-10">
         <div>
           <Label>City/Town</Label>
-          <Select value={city} onValueChange={(value: any) => setCity(value)}>
+          <Select value={cityData} onValueChange={handleChangeCity}>
             <SelectTrigger className="max-w-lg">
               <SelectValue />
             </SelectTrigger>
@@ -165,7 +217,7 @@ const PopupForm: React.FC<any> = ({ withResume }: { withResume: boolean }) => {
         </div>
         <div>
           <Label>State</Label>
-          <Select value={state} onValueChange={(value: any) => setState(value)}>
+          <Select value={stateData} onValueChange={handleChangeState}>
             <SelectTrigger className="max-w-lg">
               <SelectValue />
             </SelectTrigger>
@@ -181,7 +233,7 @@ const PopupForm: React.FC<any> = ({ withResume }: { withResume: boolean }) => {
       </div>
       <div>
         <Label>Topic</Label>
-        <Select value={topic} onValueChange={(value: any) => setTopic(value)}>
+        <Select name="topic" value={topicData} onValueChange={handleChangeTopic}>
           <SelectTrigger>
             <SelectValue placeholder="Select a topic" />
           </SelectTrigger>
@@ -231,6 +283,9 @@ const PopupForm: React.FC<any> = ({ withResume }: { withResume: boolean }) => {
           type="primary"
           icon="arrow-right"
         />
+      </div>
+      <div id="message" className={resultMessage !== '' ? "py-4 px-4 bg-[#E1F7CD]" : ""}>
+        {resultMessage}
       </div>
     </form>
   );
