@@ -71,6 +71,8 @@ function PDFList({ name, searchAlign = "left", hasFilter }: Props) {
     })
     .promise()
     .then((data: any) => {
+      console.log(data.data);
+      
       if (data.data) setData(data.data);
     });
   }
@@ -145,7 +147,7 @@ function PDFList({ name, searchAlign = "left", hasFilter }: Props) {
       {
         paginatedData?.length > 0 ? (
           paginatedData?.map((pdf: any, index: number) => (
-            <a href={pdf.file} target="_blank" rel="noopener noreferrer" key={`pdf-${index}`}>
+            <a href={pdf.fileUrl} target="_blank" rel="noopener noreferrer" key={`pdf-${index}`}>
               <PDFCard className="sm relative mb-6">
                 <p>{pdf.title}</p>
                 {pdf.description && (
